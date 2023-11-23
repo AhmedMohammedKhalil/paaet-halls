@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::middleware(['guest:admin', 'guest:company', 'guest:user'])->group(function () {
+Route::middleware(['guest:admin', 'guest:supervisor', 'guest:professor'])->group(function () {
     Route::get('/admin/login', 'AdminController@showLoginForm')->name('admin.login');
-    Route::get('/company/login', 'CompanyController@showLoginForm')->name('company.login');
-    Route::get('/user/login', 'UserController@showLoginForm')->name('user.login');
-    Route::get('/user/register', 'UserController@showRegisterForm')->name('user.register');
+    Route::get('/supervisor/login', 'SupervisorController@showLoginForm')->name('supervisor.login');
+    Route::get('professor/login', 'ProfessorController@showLoginForm')->name('professor.login');
+    Route::get('/professor/register', 'ProfessorController@showRegisterForm')->name('professor.register');
 });
 
 
@@ -31,18 +31,18 @@ Route::middleware(['auth:admin'])->name('admin.')->prefix('admin')->group(functi
     Route::get('/logout', 'AdminController@logout')->name('logout');
 });
 
-Route::middleware(['auth:company'])->name('company.')->prefix('company')->group(function () {
-    Route::get('/dashboard', 'CompanyController@dashboard')->name('dashboard');
-    Route::get('/profile', 'CompanyController@profile')->name('profile');
-    Route::get('/settings', 'CompanyController@settings')->name('settings');
-    Route::get('/changePassword', 'CompanyController@changePassword')->name('changePassword');
-    Route::get('/logout', 'CompanyController@logout')->name('logout');
+Route::middleware(['auth:supervisor'])->name('supervisor.')->prefix('supervisor')->group(function () {
+    Route::get('/dashboard', 'SupervisorController@dashboard')->name('dashboard');
+    Route::get('/profile', 'SupervisorController@profile')->name('profile');
+    Route::get('/settings', 'SupervisorController@settings')->name('settings');
+    Route::get('/changePassword', 'SupervisorController@changePassword')->name('changePassword');
+    Route::get('/logout', 'SupervisorController@logout')->name('logout');
 });
 
 
-Route::middleware(['auth:user'])->name('user.')->prefix('user')->group(function () {
-    Route::get('/profile', 'UserController@profile')->name('profile');
-    Route::get('/settings', 'UserController@settings')->name('settings');
-    Route::get('/changePassword', 'UserController@changePassword')->name('changePassword');
-    Route::get('/logout', 'UserController@logout')->name('logout');
+Route::middleware(['auth:professor'])->name('professor.')->prefix('professor')->group(function () {
+    Route::get('/profile', 'ProfessorController@profile')->name('profile');
+    Route::get('/settings', 'ProfessorController@settings')->name('settings');
+    Route::get('/changePassword', 'ProfessorController@changePassword')->name('changePassword');
+    Route::get('/logout', 'ProfessorController@logout')->name('logout');
 });
