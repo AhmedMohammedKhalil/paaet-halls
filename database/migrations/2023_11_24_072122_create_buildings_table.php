@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('supervisors', function (Blueprint $table) {
+        Schema::create('buildings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone', 8);
-            $table->string('image')->nullable();
-            $table->string('is_approved');
+            $table->string('title');
+            $table->text('image')->nullable();
+            $table->text('details');
             $table->text('address');
+
+            $table->integer('supervisor_id')->unsigned();
+            $table->foreign('supervisor_id')
+            ->references('id')->on('supervisors')
+            ->onDelete('cascade')->onUpdate('cascade');
+            
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('supervisors');
+        Schema::dropIfExists('buildings');
     }
 };
