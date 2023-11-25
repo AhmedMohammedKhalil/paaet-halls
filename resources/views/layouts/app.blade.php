@@ -43,8 +43,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/rtl.css') }}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
-    {{-- <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}"> --}}
+    {{-- <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}"> --}}
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
     {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <title>{{ config('app.name', 'PAAET HALLS') }}</title>
     @livewireStyles
