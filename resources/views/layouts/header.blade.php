@@ -9,8 +9,11 @@
                 <div class="col-lg-12 col-sm-12">
                     <div class="header-right-content">
                         @unless (auth('admin')->check() || auth('supervisor')->check() || auth('professor')->check())
+                            <a href="{{ route('admin.login') }}">
+                                <span>المسؤول</span>
+                            </a>
                             <a href="{{ route('supervisor.login') }}">
-                                <span>المسئول</span>
+                                <span>المشرف</span>
                             </a>
                             <a href="{{ route('professor.login') }}">
                                 <span>عضور هيئة التدريس</span>

@@ -12,7 +12,7 @@ class Login extends Component
     public $password;
 
     protected $rules = [
-        'email'   => 'required|email|exists:companies,email',
+        'email'   => 'required|email|exists:supervisors,email',
         'password' => 'required|min:8'
     ];
 
@@ -25,7 +25,7 @@ class Login extends Component
 
     public function login(){
         $validatedData = $this->validate();
-        if(Auth::guard('company')->attempt($validatedData)){
+        if(Auth::guard('supervisor')->attempt($validatedData)){
 
             session()->flash('message', "تم دخولك ينجاح");
             return redirect()->route('home');
