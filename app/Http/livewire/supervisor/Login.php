@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Company;
+namespace App\Http\Livewire\Supervisor;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -36,6 +36,6 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.company.login');
+        return view('livewire.supervisor.login');
     }
 }

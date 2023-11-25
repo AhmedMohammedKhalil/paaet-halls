@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\User;
+namespace App\Http\Livewire\Supervisor;
 
-use App\Models\User;
+use App\Models\Supervisor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -44,7 +44,7 @@ class Register extends Component
             ['password' => Hash::make($this->password)]
         );
         //dd($data);
-        User::create($data);
+        Supervisor::create($data);
         if(Auth::guard('user')->attempt($validatedData)){
             session()->flash('message', "You are Login successful.");
             return redirect()->route('home');
@@ -53,6 +53,6 @@ class Register extends Component
 
     public function render()
     {
-        return view('livewire.user.register');
+        return view('livewire.supervisor.register');
     }
 }

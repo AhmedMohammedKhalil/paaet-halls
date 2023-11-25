@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Professor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +15,8 @@ class AdminController extends Controller
     public function dashboard() {
 
         $page_name = 'الإحصائيات';
-        $user_count = User::all()->count();
-        return view('admins.dashboard',compact('page_name','user_count'));
+        //$professor_count = Professor::all()->count();
+    return view('admins.dashboard',compact('page_name'/*,'professor_count'*/));
     }
 
     public function profile() {

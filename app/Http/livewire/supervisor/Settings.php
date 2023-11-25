@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Company;
+namespace App\Http\Livewire\Supervisor;
 
-use App\Models\Company;
+use App\Models\Supervisor;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -11,15 +11,15 @@ use Livewire\Component;
 class Settings extends Component
 {
     use WithFileUploads;
-    public $name='', $email='', $photo, $phone='', $address='',$company_id='';
+    public $name='', $email='', $image, $phone='', $address='',$supervisor_id='';
 
 
     public function mount() {
-        $this->company_id = Auth::guard('company')->user()->id;
-        $this->name = Auth::guard('company')->user()->name;
-        $this->email = Auth::guard('company')->user()->email;
-        $this->phone = Auth::guard('company')->user()->phone;
-        $this->address = Auth::guard('company')->user()->address;
+        $this->supervisor_id = Auth::guard('supervisor')->user()->id;
+        $this->name = Auth::guard('supervisor')->user()->name;
+        $this->email = Auth::guard('supervisor')->user()->email;
+        $this->phone = Auth::guard('supervisor')->user()->phone;
+        $this->address = Auth::guard('supervisor')->user()->address;
 
     }
 
@@ -44,10 +44,10 @@ class Settings extends Component
         'address' => ['required', 'string', 'max:255']
     ];
 
-    public function updatedPhoto()
+    public function updatedImage()
     {
             $validatedata = $this->validate(
-                ['photo' => ['image','mimes:jpeg,jpg,png','max:2048']]
+                ['image' => ['image','mimes:jpeg,jpg,png','max:2048']]
             );
     }
 
@@ -55,27 +55,27 @@ class Settings extends Component
         $validatedata = $this->validate(
             array_merge(
                 $this->rules,
-                [ 'email'   => ['required','email',"unique:companies,email,".$this->company_id],
+                [ 'email'   => ['required','email',"unique:companies,email,".$this->supervisor_id],
         ]));
-        if(!$this->photo)
-            Company::whereId($this->company_id)->update($validatedata);
-        if($this->photo) {
-            $photoname = $this->photo->getClientOriginalName();
-            Company::whereId($this->company_id)->update(array_merge($validatedata,['photo' => $photoname]));
-            $dir = public_path('img/companys/'.$this->company_id);
+        if(!$this->image)
+            Supervisor::whereId($this->supervisor_id)->update($validatedata);
+        if($this->image) {
+            $imagename = $this->image->getClientOriginalName();
+            supervisor::whereId($this->supervisor_id)->update(array_merge($validatedata,['image' => $imagename]));
+            $dir = public_path('img/supervisors/'.$this->supervisor_id);
             if(file_exists($dir))
                 File::deleteDirectories($dir);
             else
                 mkdir($dir);
-            $this->photo->storeAs($dir,$photoname);
+            $this->image->storeAs($dir,$imagename);
             File::deleteDirectory(public_path('uploads/livewire-tmp'));
         }
         session()->flash('message', "Your Profile Updated.");
-        return redirect()->route('company.profile');
+        return redirect()->route('supervisor.profile');
     }
 
     public function render()
     {
-        return view('livewire.company.settings');
+        return view('livewire.supervisor.settings');
     }
 }

@@ -11,14 +11,13 @@ use Livewire\Component;
 class Settings extends Component
 {
     use WithFileUploads;
-    public $name='', $email='', $photo,$admin_id='';
+    public $name='', $email='', $image,$admin_id='';
 
 
     public function mount() {
         $this->admin_id = Auth::guard('admin')->user()->id;
         $this->name = Auth::guard('admin')->user()->name;
         $this->email = Auth::guard('admin')->user()->email;
-        $this->address = Auth::guard('admin')->user()->address;
 
     }
 
@@ -37,10 +36,10 @@ class Settings extends Component
         'name' => ['required', 'string', 'max:50'],
     ];
 
-    public function updatedPhoto()
+    public function updatedImage()
     {
             $validatedata = $this->validate(
-                ['photo' => ['image','mimes:jpeg,jpg,png','max:2048']]
+                ['image' => ['image','mimes:jpeg,jpg,png','max:2048']]
             );
     }
 
@@ -50,17 +49,17 @@ class Settings extends Component
                 $this->rules,
                 [ 'email'   => ['required','email',"unique:admins,email,".$this->admin_id],
         ]));
-        if(!$this->photo)
+        if(!$this->image)
             Admin::whereId($this->admin_id)->update($validatedata);
-        if($this->photo) {
-            $photoname = $this->photo->getClientOriginalName();
-            Admin::whereId($this->admin_id)->update(array_merge($validatedata,['photo' => $photoname]));
+        if($this->image) {
+            $imagename = $this->image->getClientOriginalName();
+            Admin::whereId($this->admin_id)->update(array_merge($validatedata,['image' => $imagename]));
             $dir = public_path('img/admins/'.$this->admin_id);
             if(file_exists($dir))
                 File::deleteDirectories($dir);
             else
                 mkdir($dir);
-            $this->photo->storeAs($dir,$photoname);
+            $this->image->storeAs($dir,$imagename);
             File::deleteDirectory(public_path('uploads/livewire-tmp'));
         }
         session()->flash('message', "Your Profile Updated.");

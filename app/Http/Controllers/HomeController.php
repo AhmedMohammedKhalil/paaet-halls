@@ -17,4 +17,42 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+
+    public function aboutus()
+    {
+        return view('aboutus');
+    }
+
+
+    public function allbuildings()
+    {
+        return view('allbuildings');
+    }
+
+
+    public function showbuilding()
+    {
+        return view('showbuilding');
+    }
+
+
+    public function allhalls()
+    {
+        return view('allhalls');
+    }
+
+
+    public function showhall()
+    {
+        return view('showhall');
+    }
+
+
+    public function search()
+    {
+        return view('search');
+    }
+
+
 }
