@@ -1,6 +1,6 @@
 
 <form class="user-form" wire:submit.prevent='login'>
-    <h3>تسجيل دخول المسئول</h3>
+    <h3>تسجيل دخول المشرف</h3>
     @if (session()->has('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="col-12">
-            <h3> سجل دخول او <a href="{{ route('supervisor.login') }}" class="text-decoration-underline"> انشئ حساب الان </a>
+            <h3> سجل دخول او <a href="{{ route('supervisor.register') }}" class="text-decoration-underline"> انشئ حساب الان </a>
             </h3>
         </div>
         <div class="col-12">

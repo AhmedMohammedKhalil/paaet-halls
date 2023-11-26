@@ -41,5 +41,9 @@ class SupervisorController extends Controller
         return redirect()->route('home');
     }
 
+    public function waitapproval()
+    {
+        return view('supervisors.waiting');
+    }
 
 }
