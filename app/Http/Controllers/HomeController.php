@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Building;
+use App\Models\Hall;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,7 +17,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $buildings = Building::limit(10)->get();  
+        $halls = Hall::limit(10)->get();
+        return view('home',compact('buildings','halls'));
     }
 
 
@@ -27,7 +31,8 @@ class HomeController extends Controller
 
     public function allbuildings()
     {
-        return view('allbuildings');
+        $buildings = Building::all();  
+        return view('allbuildings',compact('buildings'));
     }
 
 
@@ -39,7 +44,8 @@ class HomeController extends Controller
 
     public function allhalls()
     {
-        return view('allhalls');
+        $halls = Hall::all();
+        return view('allhalls',compact('halls'));
     }
 
 

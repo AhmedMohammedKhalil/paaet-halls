@@ -28,16 +28,11 @@
 
             <div class="col-lg-6">
                 <div class="about-content ml-15">
-                    <span>About our University</span>
-                    <h2>Our education system inspires the next generation</h2>
+                    <span>موقعنا</span>
+                    <h2>من نحن</h2>
 
-                    <p>Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.</p>
-
-                    <a href="{{ route('aboutus') }}" class="default-btn">
-                            المزيد
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
+                    <p>نحن مجموعه من الطلاب الخريجين قمنا بعمل موقع الكترونى لمشروع تخرجنا ليخدم جميع اعضاء هيئة التدريس  وتسهيل لهم حجز القاعات وتنظيم لهم عملية الحجز ومعرفة كافة التفاصيل عن القاعات قبل حجزها وايضا طريقة للتواصل مع المشرفين والقائمين والمسئولين عن القاعات<p>
+                        
                 </div>
             </div>
         </div>

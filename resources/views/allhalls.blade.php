@@ -1,4 +1,20 @@
 @extends('layouts.main')
+@push('css')
+<style>
+    .single-study{
+        transition: all 1s;
+        border-radius:20px;
+        overflow: hidden; 
+    }
+    .single-study img{
+        height: 250px;
+        width: 100%
+    }
+    .single-study:hover{
+        box-shadow: gray 1px 1px 5px;
+    }
+</style>
+@endpush
 @push('title')
     <div class="page-title-content">
         <h2>جميع القاعات</h2>
@@ -47,157 +63,36 @@
             </div>
 
             <div class="row justify-content-center">
+                @foreach($halls as $hall)
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-study style-img">
-                        <img src="assets/images/study/study-1.jpg" alt="Image">
+                        <img src="{{ asset("assets/images/halls/$hall->id/cover/$hall->cover") }}" alt="Image">
 
                         <div class="single-study-content">
                             <i class="flaticon-finance"></i>
                             <h3>
-                                <a href="{{ route('showhall') }}">Business and finance</a>
+                                <a href="{{ route('showhall',['id'=>$hall->id]) }}">قاعة {{ $hall->number }}</a>
                             </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
+                            <h6>
+                                {{ $hall->building->title }}
+                            </h6>
+                            <p>
+                                @if(strlen($hall->details) > 100) 
+                                    {!! substr(nl2br($hall->details),100)."..." !!}
+                                @else
+                                    {!! nl2br($hall->details) !!}
+                                @endif
+                            </p>
 
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
+                            <a href="{{ route('showhall',['id'=>$hall->id]) }}" class="read-more">
+                                    المزيد
+                                    <span class="ri-arrow-left-line"></span>
+                                </a>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-2.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-data-scientist"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">IT and data science</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-3.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-compliant"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Law and criminology</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-4.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-health"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Health and medicine</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-5.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-sprout"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Agricultural sciences</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-6.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-mind"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Psychology</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-7.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-book"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Library studies</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-8.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-presentation"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Teaching & education</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                
 
 
             </div>

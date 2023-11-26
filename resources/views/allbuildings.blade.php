@@ -1,4 +1,21 @@
 @extends('layouts.main')
+@push('css')
+<style>
+    .single-study{
+        transition: all 1s;
+        border-radius:20px;
+        overflow: hidden; 
+    }
+    .single-study img{
+        height: 250px;
+        width: 100%
+
+    }
+    .single-study:hover{
+        box-shadow: gray 1px 1px 5px;
+    }
+</style>
+@endpush
 @push('title')
     <div class="page-title-content">
         <h2>جميع المبانى</h2>
@@ -47,157 +64,33 @@
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-lg-3 col-sm-6">
+                @foreach($buildings as $building)
+                <div class="col-lg-4 col-sm-6">
                     <div class="single-study style-img">
-                        <img src="assets/images/study/study-1.jpg" alt="Image">
+                        <img src="{{ asset("assets/images/buildings/$building->id/$building->image") }}" alt="Image">
 
                         <div class="single-study-content">
                             <i class="flaticon-finance"></i>
                             <h3>
-                                <a href="{{ route('showbuilding') }}">Business and finance</a>
+                                <a href="{{ route('showbuilding',['id'=>$building->id]) }}">{{ $building->title }}</a>
                             </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
+                            <p>
+                                @if(strlen($building->details) > 100) 
+                                    {!! substr(nl2br($building->details),100)."..." !!}
+                                @else
+                                    {!! nl2br($building->details) !!}
+                                @endif
+                            </p>
 
-                            <a href="{{ route('showbuilding') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
+                            <a href="{{ route('showbuilding',['id'=>$building->id]) }}" class="read-more">
+                                    المزيد
+                                    <span class="ri-arrow-left-line"></span>
+                                </a>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-2.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-data-scientist"></i>
-                            <h3>
-                                <a href="{{ route('showbuilding') }}">IT and data science</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showbuilding') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-3.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-compliant"></i>
-                            <h3>
-                                <a href="{{ route('showbuilding') }}">Law and criminology</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showbuilding') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-4.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-health"></i>
-                            <h3>
-                                <a href="{{ route('showbuilding') }}">Health and medicine</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showbuilding') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-5.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-sprout"></i>
-                            <h3>
-                                <a href="{{ route('showbuilding') }}">Agricultural sciences</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showbuilding') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-6.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-mind"></i>
-                            <h3>
-                                <a href="{{ route('showbuilding') }}">Psychology</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showbuilding') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-7.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-book"></i>
-                            <h3>
-                                <a href="{{ route('showbuilding') }}">Library studies</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showbuilding') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-8.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-presentation"></i>
-                            <h3>
-                                <a href="{{ route('showbuilding') }}">Teaching & education</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showbuilding') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                
 
 
             </div>

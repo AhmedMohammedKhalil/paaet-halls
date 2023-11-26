@@ -19,7 +19,7 @@ class SupervisorSeeder extends Seeder
             'email' => 'samer@mail.com',
             'phone'=>'69511112',
             'password' => Hash::make('123456789'), // password
-            'is_approved'=>'true',
+            'is_approved'=>'تمت الموافقة',
             'address'=>'الكويت بنيدر',
             'created_at' => now(),
             'updated_at' => now(),
@@ -30,7 +30,7 @@ class SupervisorSeeder extends Seeder
             'email' => 'amer@mail.com',
             'phone'=>'69511112',
             'password' => Hash::make('123456789'), // password
-            'is_approved'=>'true',
+            'is_approved'=>'تمت الموافقة',
             'address'=>'الكويت بنيدر',
             'created_at' => now(),
             'updated_at' => now(),
@@ -40,7 +40,7 @@ class SupervisorSeeder extends Seeder
             'email' => 'mahmoud@mail.com',
             'phone'=>'69511112',
             'password' => Hash::make('123456789'), // password
-            'is_approved'=>'true',
+            'is_approved'=>'تمت الموافقة',
             'address'=>'الكويت الفيحاء',
             'created_at' => now(),
             'updated_at' => now(),
