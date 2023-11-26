@@ -1,4 +1,5 @@
 @extends('layouts.main')
+
 @section('content')
 <section class="blog-post-area blog-post-left-sidebar ptb-100">
     <div class="container">

@@ -41,5 +41,28 @@ class SupervisorController extends Controller
         return redirect()->route('home');
     }
 
+    public function index() {
+        $supervisors = Supervisor::all();
+        return view('admins.supervisors.index',compact('supervisors'));
+
+    }
+
+    public function accept(Request $r) {
+        Supervisor::whereId($r->id)->update(['is_approved' => 'تمت الموافقة']);
+        return redirect()->route('admin.supervisor.index');
+
+    }
+
+    public function reject(Request $r) {
+        Supervisor::whereId($r->id)->update(['is_approved' => 'تمت الرفض']);
+        return redirect()->route('admin.supervisor.index');
+    }
+
+    public function show(Request $r) {
+
+
+    }
+
+
 
 }

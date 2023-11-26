@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
     public function index() {
-        return view('admins.services.index');
+        $services = Service::all();
+        return view('admins.services.index',compact('services'));
 
     }
 
@@ -16,13 +18,15 @@ class ServiceController extends Controller
     }
 
 
-    public function edit() {
-        return view('admins.services.edit');
+    public function edit(Request $r) {
+
+        return view('admins.services.edit',['service_id'=>$r->id]);
     }
 
 
-    public function delete() {
-        return view('admins.services.delete');
+    public function delete(Request $r) {
+        Service::whereId($r->id)->delete();
+        return redirect()->route('admin.service.index');
     }
 
 

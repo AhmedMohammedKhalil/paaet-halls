@@ -26,9 +26,9 @@
                             <i class="flaticon-graduated"></i>
 
                             <h2>
-                                <span dir="ltr" id="counter">500</span>
+                                <span dir="ltr" id="counter">{{ $supervisor_count }}</span>
                             </h2>
-                            <h4>Students</h4>
+                            <h4>المشرفين</h4>
                         </div>
                     </div>
 
@@ -38,9 +38,9 @@
 
                             <div class="count-title">
                                 <h2>
-                                    <span dir="ltr" id="counter">500</span>
+                                    <span dir="ltr" id="counter">{{ $professor_count }}</span>
                                 </h2>
-                                <h4>Teachers</h4>
+                                <h4>اعضاء هيئة التدريس</h4>
                             </div>
                         </div>
                     </div>
@@ -51,9 +51,9 @@
 
                             <div class="count-title">
                                 <h2>
-                                    <span dir="ltr" id="counter">500</span>
+                                    <span dir="ltr" id="counter">{{ $building_count }}</span>
                                 </h2>
-                                <h4>Subjects</h4>
+                                <h4>المبانى</h4>
                             </div>
                         </div>
                     </div>
@@ -64,9 +64,21 @@
 
                             <div class="count-title">
                                 <h2>
-                                    <span dir="ltr" id="counter">500</span>
+                                    <span dir="ltr" id="counter">{{ $hall_count }}</span>
                                 </h2>
-                                <h4>Degrees</h4>
+                                <h4>القاعات</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="single-counter bg-style">
+                            <i class="flaticon-graduation-cap"></i>
+
+                            <div class="count-title">
+                                <h2>
+                                    <span dir="ltr" id="counter">{{ $service_count }}</span>
+                                </h2>
+                                <h4>الخدمات</h4>
                             </div>
                         </div>
                     </div>

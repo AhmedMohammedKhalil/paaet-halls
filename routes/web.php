@@ -46,6 +46,14 @@ Route::middleware(['auth:admin'])->name('admin.')->prefix('admin')->group(functi
         Route::delete('/delete', 'ServiceController@delete')->name('delete');
 
     });
+
+    Route::prefix('/supervisor')->name('supervisor.')->group(function () {
+        Route::get('/index', 'SupervisorController@index')->name('index');
+        Route::get('/show', 'SupervisorController@show')->name('show');
+        Route::get('/accept', 'SupervisorController@accept')->name('accept');
+        Route::get('/reject', 'SupervisorController@reject')->name('reject');
+
+    });
 });
 
 Route::middleware(['auth:supervisor'])->name('supervisor.')->prefix('supervisor')->group(function () {

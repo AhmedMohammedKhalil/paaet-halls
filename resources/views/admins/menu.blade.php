@@ -34,6 +34,12 @@
                     </a>
             </li>
             <li>
+                <a href="{{ route('admin.supervisor.index') }}">
+                        إدارة المشرفين
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.logout') }}">
                         خروج
                         <i class="ri-logout-box-r-line"></i>
