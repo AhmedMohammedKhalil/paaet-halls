@@ -21,6 +21,9 @@ Route::get('/allhalls', 'HomeController@allhalls')->name('allhalls');
 Route::get('/showbuilding', 'HomeController@showbuilding')->name('showbuilding');
 Route::get('/showhall', 'HomeController@showhall')->name('showhall');
 Route::get('/search', 'HomeController@search')->name('search');
+Route::get('/search-showhall', 'HomeController@searchShowHall')->name('search-showhall');
+Route::get('/table', 'HomeController@table')->name('table');
+
 
 
 Route::middleware(['guest:admin', 'guest:supervisor', 'guest:professor'])->group(function () {

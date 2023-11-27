@@ -22,7 +22,7 @@
         </div>
 
         <!-- Start Wishlist Area -->
-    <section class="wishlist-area  ptb-100">
+    <section class="wishlist-area ">
         <div class="container">
                 <div class="cart-table">
                     <table class="table table-bordered">

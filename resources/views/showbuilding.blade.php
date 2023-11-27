@@ -3,11 +3,15 @@
     <div class="page-title-content">
         <h2>تفاصيل المبنى</h2>
         <ul>
+            @if($route == 'home')
             <li>
-                <a href="{{ route('allbuildings') }}">
-                    جميع المبانى
-                </a>
+                <a href="{{ $url }}">الرئيسية </a>
             </li>
+            @else
+            <li>
+                <a href="{{ route('allbuildings') }}">جميع المبانى</a>
+            </li>
+            @endif
             <li class="active">تفاصيل المبنى</li>
         </ul>
     </div>
@@ -21,7 +25,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-img-two mr-15">
-                        <img src="{{ asset('assets/images/about-img-2.jpg') }}" alt="Image">
+                        <img src="{{ asset("assets/images/buildings/$building->id/$building->image") }}" alt="Image">
 
                         <div class="about-shape">
                             <img src="{{ asset('assets/images/about-shape.png') }}" alt="Image">
@@ -31,10 +35,10 @@
 
                 <div class="col-lg-6">
                     <div class="about-content ml-15">
-                        <h2>اسم المبنى</h2>
+                        <h2>{{ $building->title }}</h2>
+                        <p>{!! nl2br($building->details) !!}</p>
+                        <p>{!! nl2br($building->address) !!}</p>
 
-                        <p>Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.</p>
 
                     </div>
                 </div>
@@ -43,167 +47,44 @@
     </section>
     <!-- End About Area -->
     <!-- Start Study Area -->
-    <section class="studys-area study-area-style-two ptb-100">
+    <section class="studys-area study-area-style-two ptb-100" style="min-height:500px">
         <div class="container">
+            @if(count($building->halls) > 0)
             <div class="section-title">
                 <h2>جميع القاعات</h2>
             </div>
-
             <div class="row justify-content-center">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-1.jpg" alt="Image">
+                @foreach($building->halls as $hall)
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-study style-img">
+                            <img src="{{ asset("assets/images/halls/$hall->id/cover/$hall->cover") }}" alt="Image">
 
-                        <div class="single-study-content">
-                            <i class="flaticon-finance"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Business and finance</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
+                            <div class="single-study-content">
+                                <i class="flaticon-finance"></i>
+                                <h3>
+                                    <a href="{{ route('showhall',['id'=>$hall->id]) }}">قاعة {{ $hall->number }}</a>
+                                </h3>
+                                <h6>
+                                    {{ $hall->building->title }}
+                                </h6>
+                                <p>
+                                    @if(strlen($hall->details) > 100)
+                                        {!! substr(nl2br($hall->details),100)."..." !!}
+                                    @else
+                                        {!! nl2br($hall->details) !!}
+                                    @endif
+                                </p>
 
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
+                                <a href="{{ route('showhall',['id'=>$hall->id]) }}" class="read-more">
+                                        المزيد
+                                        <span class="ri-arrow-left-line"></span>
+                                    </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-2.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-data-scientist"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">IT and data science</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-3.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-compliant"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Law and criminology</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-4.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-health"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Health and medicine</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-5.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-sprout"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Agricultural sciences</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-6.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-mind"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Psychology</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-7.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-book"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Library studies</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-study style-img">
-                        <img src="assets/images/study/study-8.jpg" alt="Image">
-
-                        <div class="single-study-content">
-                            <i class="flaticon-presentation"></i>
-                            <h3>
-                                <a href="{{ route('showhall') }}">Teaching & education</a>
-                            </h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor incididunt ut labore et dolore.</p>
-
-                            <a href="{{ route('showhall') }}" class="read-more">
-									Find out more
-									<span class="ri-arrow-left-line"></span>
-								</a>
-                        </div>
-                    </div>
-                </div>
-
-
+                @endforeach
             </div>
+            @endif
         </div>
     </section>
     <!-- End Study Area -->

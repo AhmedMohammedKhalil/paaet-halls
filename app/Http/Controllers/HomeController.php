@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Building;
 use App\Models\Hall;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $buildings = Building::limit(10)->get();  
+        $buildings = Building::limit(10)->get();
         $halls = Hall::limit(10)->get();
         return view('home',compact('buildings','halls'));
     }
@@ -31,14 +32,17 @@ class HomeController extends Controller
 
     public function allbuildings()
     {
-        $buildings = Building::all();  
+        $buildings = Building::all();
         return view('allbuildings',compact('buildings'));
     }
 
 
-    public function showbuilding()
+    public function showbuilding(Request $r)
     {
-        return view('showbuilding');
+        $building = Building::whereId($r->id)->first();
+        $url = url()->previous();
+        $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
+        return view('showbuilding',compact('building','route','url'));
     }
 
 
@@ -49,16 +53,53 @@ class HomeController extends Controller
     }
 
 
-    public function showhall()
+    public function showhall(Request $r)
     {
-        return view('showhall');
+        $hall = Hall::whereId($r->id)->first();
+        $search = '';
+        $url = url()->previous();
+        $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
+        return view('showhall',compact('hall','search','route','url'));
     }
 
 
     public function search()
     {
-        return view('search');
+        $halls = Hall::all();
+        return view('search',compact('halls'));
     }
 
+    public function searchShowhall(Request $r)
+    {
+        $hall = Hall::whereId($r->id)->first();
+        $search = 'search';
+        $url = url()->previous();
+        $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
+        return view('showhall',compact('hall','search','route','url'));
+    }
+
+
+    public function table()
+    {
+        $events = [
+            [
+                'title' => 'بييبيب',
+                'start' => Carbon::now()->subHours(3),
+                'end' => Carbon::now()->subHours(2),
+                'backgroundColor' => '#62442e',
+                'borderColor' => '#62442e'
+
+            ],
+            [
+                'title' => 'يبيبي يبيب',
+                'start' => Carbon::now()->subHours(5),
+                'end' => Carbon::now()->subHours(4),
+                'backgroundColor' => '#62442e',
+                'borderColor' => '#62442e'
+            ]
+
+        ];
+        return view('table',compact('events'));
+    }
 
 }
