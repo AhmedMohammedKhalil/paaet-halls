@@ -32,7 +32,12 @@
     <div class="row justify-content-md-center" style="min-height: 500px">
     <div class="col-lg-6 col-md-6">
         <div class="single-team-member">
-            <img src="{{ asset('assets/images/team/team-3.jpg') }}" alt="Image">
+            {{-- <img src="{{ asset('assets/images/team/team-3.jpg') }}" alt="Image"> --}}
+            @if(auth('supervisor')->user()->image != null)
+                <img src="{{ asset('assets/images/supervisors/'.auth('supervisor')->user()->id.'/'.auth('supervisor')->user()->image) }}" alt="Image">
+            @else
+                <img src="{{ asset('assets/images/supervisors/default.jpg') }}" alt="Image">
+            @endif
 
             <div class="team-content">
                 <div class="team-name">

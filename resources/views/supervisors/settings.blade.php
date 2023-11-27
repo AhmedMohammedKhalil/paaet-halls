@@ -1,4 +1,4 @@
-@extends('users.layout')
+@extends('supervisors.layout')
 @section('section')
-    <livewire:user.settings />
+    <livewire:supervisor.settings />
 @endsection
