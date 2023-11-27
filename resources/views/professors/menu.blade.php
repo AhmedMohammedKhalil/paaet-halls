@@ -22,6 +22,12 @@
                     </a>
             </li>
             <li>
+                <a href="{{ route('professor.settings') }}">
+                    جدول حجوزات القاعات
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
                 <a href="{{ route('professor.allnotifications') }}">
                         الإشعارات
                         <i class="ri-arrow-left-s-line"></i>

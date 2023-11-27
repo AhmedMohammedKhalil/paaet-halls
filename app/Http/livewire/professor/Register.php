@@ -46,7 +46,7 @@ class Register extends Component
         //dd($data);
         Professor::create($data);
         if(Auth::guard('professor')->attempt($validatedData)){
-            session()->flash('message', "You are Login successful.");
+            session()->flash('message', "You are Register successful.");
             return redirect()->route('home');
         }
     }

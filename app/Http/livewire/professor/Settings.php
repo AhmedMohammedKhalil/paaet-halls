@@ -62,13 +62,14 @@ class Settings extends Component
         if($this->image) {
             $imagename = $this->image->getClientOriginalName();
             Professor::whereId($this->professor_id)->update(array_merge($validatedata,['image' => $imagename]));
-            $dir = public_path('img/professors/'.$this->professor_id);
+            $path = '/images/professors/'.$this->admin_id;
+            $dir = public_path('assets'.$path);
             if(file_exists($dir))
                 File::deleteDirectories($dir);
             else
                 mkdir($dir);
-            $this->image->storeAs($dir,$imagename);
-            File::deleteDirectory(public_path('uploads/livewire-tmp'));
+            $this->image->storeAs($path,$imagename);
+            File::deleteDirectory(public_path('assets/livewire-tmp'));
         }
         session()->flash('message', "Your Profile Updated.");
         return redirect()->route('professor.profile');

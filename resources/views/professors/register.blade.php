@@ -20,7 +20,7 @@
 <section class="user-area ptb-100">
     <div class="container">
         <div class="user-form-content max-width-600">
-            <livewire:professor.register />
+            @livewire('professor.register')
         </div>
     </div>
     </section>

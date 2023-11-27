@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Building;
 use App\Models\Hall;
+use App\Models\Reserve;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -59,6 +60,7 @@ class HomeController extends Controller
         $search = '';
         $url = url()->previous();
         $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
+
         return view('showhall',compact('hall','search','route','url'));
     }
 
@@ -79,26 +81,20 @@ class HomeController extends Controller
     }
 
 
-    public function table()
+    public function showHallTable(Request $r)
     {
-        $events = [
-            [
-                'title' => 'بييبيب',
-                'start' => Carbon::now()->subHours(3),
-                'end' => Carbon::now()->subHours(2),
+
+        $events = [];
+        $HallReserves = Reserve::where('hall_id',$r->id)->get();
+        foreach($HallReserves as $reserve) {
+            $events[] = [
+                'title' => $reserve->professor->name,
+                'start' => $reserve->start_at,
+                'end'=> $reserve->end_at,
                 'backgroundColor' => '#62442e',
                 'borderColor' => '#62442e'
-
-            ],
-            [
-                'title' => 'يبيبي يبيب',
-                'start' => Carbon::now()->subHours(5),
-                'end' => Carbon::now()->subHours(4),
-                'backgroundColor' => '#62442e',
-                'borderColor' => '#62442e'
-            ]
-
-        ];
+            ];
+        }
         return view('table',compact('events'));
     }
 

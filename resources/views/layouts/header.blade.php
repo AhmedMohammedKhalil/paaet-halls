@@ -16,7 +16,7 @@
                                 <span>المشرف</span>
                             </a>
                             <a href="{{ route('professor.login') }}">
-                                <span>عضور هيئة التدريس</span>
+                                <span>عضو هيئة التدريس</span>
                             </a>
                         @endunless
                         @auth('admin')

@@ -4,8 +4,8 @@
         <h2>تعديل البروفايل</h2>
         <ul>
             <li>
-                <a href="{{ route('home') }}">
-                    الرئيسية
+                <a href="{{ route('admin.profile') }}">
+                    البروفايل
                 </a>
             </li>
             <li class="active">تعديل البروفايل</li>

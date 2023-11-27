@@ -39,7 +39,7 @@ class Hall extends Model
     public function services()
     {
         return $this->belongsToMany(Service::class,'hall_services','hall_id','service_id')
-        ->using(HallService::class)->withTimestamps();
+        ->using(HallService::class)->withPivot('id','hall_id','service_id')->withTimestamps();
     }
 
 }
