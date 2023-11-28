@@ -32,8 +32,9 @@
                     </div>
 
                     <div class="col-lg-6">
+                        
                         <div class="video-button">
-                            <a href="https://www.youtube.com/watch?v=rl93WvCJt-U" class="popup-youtube video-btn">
+                            <a href="{{ asset('assets/videos/video.mp4') }}" class="video-btn">
                                     <i class="flaticon-play-button"></i>
                                 </a>
                         </div>
@@ -259,3 +260,28 @@
 </section>
 <!-- End Contact Area -->
 @endsection
+@push('js')
+    <script>
+        $(document).ready(function() {
+            
+            $('.video-btn').magnificPopup({
+                disableOn: 700,
+                type: 'iframe',
+                mainClass: 'mfp-fade',
+                removalDelay: 160,
+                preloader: false,
+                fixedContentPos: false,
+                iframe: {
+                    markup: '<div class="mfp-iframe-scaler">'+
+                        '<div class="mfp-close"></div>'+
+                        '<iframe class="mfp-iframe" frameborder="0" allowfullscreen srcdoc="<html style=\'overflow:hidden\'><video autoplay style=\'width:100%;height:auto;overflow:hidden\' controls><source src=\'{{ asset('assets/videos/video.mp4')  }}\' type=\'video/mp4\' />Your browser does not support this video format.</video></html>">'+
+                        '</iframe>'+
+                    '</div>',
+
+                }
+                
+            });
+            
+        });
+    </script>
+@endpush
