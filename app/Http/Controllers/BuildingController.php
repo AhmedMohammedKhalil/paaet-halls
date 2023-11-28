@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class BuildingController extends Controller
 {
     public function index() {
-        return view('supervisors.buildings.index');
+        $buildings=auth('supervisor')->user()->buildings;
+        return view('supervisors.buildings.index',compact('buildings'));
     }
 
     public function create() {
