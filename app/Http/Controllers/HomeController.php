@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Building;
 use App\Models\Hall;
 use App\Models\Reserve;
+use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -69,7 +70,17 @@ class HomeController extends Controller
     public function search()
     {
         $halls = Hall::all();
-        return view('search',compact('halls'));
+        $services = Service::all();
+        $capacities =[
+            '0 - 50',
+            '50 - 100',
+            '100 - 150',
+            '150 - 200',
+            '200 - 250',
+            '250 - 300',
+            'اكبر من 300'
+        ];
+        return view('search',compact('halls','services','capacities'));
     }
 
     public function searchShowhall(Request $r)

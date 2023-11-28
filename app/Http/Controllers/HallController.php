@@ -25,13 +25,30 @@ class HallController extends Controller
     }
 
 
-    public function show() {
-        return view('supervisors.halls.show');
-
+    public function show(Request $r) {
+        $hall = Hall::whereId($r->id)->first();
+        $search = '';
+        return view('supervisors.halls.show',compact('hall','search'));
     }
 
-    public function editImage() {
+    public function showTable(Request $r) {
+        $events = [];
+        $HallReserves = Reserve::where('hall_id',$r->id)->get();
+        foreach($HallReserves as $reserve) {
+            $events[] = [
+                'title' => $reserve->professor->name,
+                'start' => $reserve->start_at,
+                'end'=> $reserve->end_at,
+                'backgroundColor' => '#62442e',
+                'borderColor' => '#62442e'
+            ];
+        }
+        return view('table',compact('events'));
+    }
 
+
+    public function editImage(Request $r) {
+        return view('supervisors.halls.editImage',['image_id'=>$r->id]);
     }
 
     public function delete() {
@@ -41,9 +58,6 @@ class HallController extends Controller
     public function deleteImage() {
     }
 
-
-    public function allbooking() {
-    }
 
     public function showHall(Request $r)
     {

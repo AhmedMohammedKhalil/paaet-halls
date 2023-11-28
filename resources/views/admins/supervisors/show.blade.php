@@ -110,6 +110,7 @@
                                     <a title="عرض"  href="{{ route('admin.supervisor.showHall',['id'=>$h->id]) }}" class="show" style="color:blue;font-size:20px">
                                         <i class="ri-eye-line"></i>
                                     </a>
+
                                 </td>
                             </tr>
                             @endforeach

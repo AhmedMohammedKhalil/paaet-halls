@@ -1,60 +1,69 @@
 <form class="find-courses-from-bg find-courses-from-bg-three mt-0" wire:submit.prevent='search'>
     <h2>بحث عن القاعة</h2>
 
-    <ul>
-        <li>
-            <label class="single-check">
-                    ولاد
-                    <input type="radio" checked="checked" name="radio-2" value="ولاد" wire:model.lazy='gender'>
-                    <span class="checkmark"></span>
-                </label>
-        </li>
 
-        <li>
-            <label class="single-check">
-                    بنات
-                    <input type="radio" name="radio-2" value="بنات" wire:model.lazy='gender'>
-                    <span class="checkmark"></span>
-                </label>
-        </li>
-    </ul>
 
     <div class="row">
 
 
         <div class="col-lg-6 col-md-6">
             <div class="form-group">
-                <select class="form-control">
-                        <option value="1">السعة</option>
-                        <option value="2">Web Design</option>
-                        <option value="3">Web Developement</option>
-                        <option value="4">Graphic Design</option>
-                        <option value="5">App Developement</option>
+                <select class="form-control" wire:model.lazy='capacity'>
+                        <option value="1" disabled selected>السعة</option>
+                        @foreach ($capacities as $c)
+                            <option value="{{ $c }}">{{ $c }}</option>
+                        @endforeach
                     </select>
                 <i class="ri-arrow-down-s-line"></i>
+                @error('capacity') <span class="text-danger error">{{ $message }}</span>@enderror
+
             </div>
         </div>
 
         <div class="col-lg-6 col-md-6">
             <div class="form-group">
-                <select class="form-control">
-                        <option value="1">الخدمات</option>
-                        <option value="2">العربيّة</option>
-                        <option value="3">Deutsch</option>
-                        <option value="4">Português</option>
-                        <option value="5">简体中文</option>
+                <select class="form-control" wire:model.lazy='gender'>
+                        <option value="1" disabled selected>النوع</option>
+                        <option value="بنين">بنين</option>
+                        <option value="بنات">بنات</option>
                     </select>
                 <i class="ri-arrow-down-s-line"></i>
+                @error('gender') <span class="text-danger error">{{ $message }}</span>@enderror
+
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label for="start-at" style="color: white">بداية الحجز</label>
+                <input type="datetime-local" title="" class="form-control" name="start-at" id="start-at" required wire:model.lazy='start_at'>
+                @error('start_at') <span class="text-danger error">{{ $message }}</span>@enderror
+
             </div>
         </div>
         <div class="col-lg-6 col-md-6">
             <div class="form-group">
-                <input type="datetime-local" class="form-control" name="" id="" required wire:model.lazy='start_at'>
+                <label for="end-at" style="color: white">نهاية الحجز</label>
+                <input type="datetime-local" title="" class="form-control" name="end-at" id="end-at" wire:model.lazy='end_at'>
+                @error('end_at') <span class="text-danger error">{{ $message }}</span>@enderror
+
             </div>
         </div>
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-12 col-md-12">
             <div class="form-group">
-                <input type="datetime-local" class="form-control" name="" id="" wire:model.lazy='end_at'>
+                <p style="color: white">ملحوظة: لابد ان يكون بداية الحجز ونهاية الحجز فى نفس اليوم المحدد</p>
+            </div>
+        </div>
+        <div class="offset-3 col-lg-6 col-md-6">
+            <div class="form-group">
+                <select class="form-control" multiple style="height: 100px" wire:model.lazy='services'>
+                        <option value="0" disabled style="color: white">الخدمات</option>
+                        @foreach ($servicesModel as $s)
+                            <option value="{{ $s->id }}">{{ $s->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('services') <span class="text-danger error">{{ $message }}</span>@enderror
+
             </div>
         </div>
         <div class="offset-3 col-lg-6 col-md-6">

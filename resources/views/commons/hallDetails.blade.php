@@ -24,6 +24,13 @@
             background-color: var(--main-color);
             border: none
         }
+
+        .product-details-image img{
+            height: 350px;
+        }
+        .single-gallery{
+            height: 238px;
+        }
     </style>
 @endpush
 <section class="product-details-area ptb-100">
@@ -59,7 +66,10 @@
                                     عرض الجدول
                             </a>
                         @elseif(isset($path) && $path == 'professor')
-
+                        @elseif(isset($path) && $path == 'supervisor')
+                            <a href="{{ route('supervisor.hall.showTable',['id'=>$hall->id]) }}" class="default-btn mr-20">
+                                    عرض الجدول
+                            </a>
                         @else
                             <a href="{{ route('showhalltable',['id'=>$hall->id]) }}" class="default-btn mr-20">
                                     عرض الجدول
@@ -159,6 +169,35 @@
 <!-- End Study Area -->
 <!-- Start Study Area -->
 @if(count($hall->images) > 0)
+
+@push('css')
+    <style>
+        button.remove{
+                        width: 40px;
+                height: 40px;
+                line-height: 40px;
+                margin: 0 10px;
+                color: var(--white-color);
+                border: 1px solid var(--white-color);
+                border-radius: 50%;
+                display: inline-block;
+                -webkit-transition: var(--transition);
+                transition: var(--transition);
+                font-size: 20px;
+                background: transparent;
+        }
+        button.remove:hover {
+            background-color: white !important;
+            color: black !important;
+        }
+        .mfp-counter{
+            direction: ltr
+        }
+    </style>
+@endpush
+
+
+
 <section class="studys-area study-area-style-two ptb-100">
     <div class="container">
         <div class="section-title">
@@ -166,29 +205,39 @@
         </div>
 
         <!-- Start Gallery Area -->
-    <div class="gallery-area gallery-popup ptb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                @foreach ($hall->images as $image)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-gallery">
-                            <img src="{{ asset("assets/images/halls/$hall->id/images/$image->id/$image->image") }}" alt="Image">
 
-                            <div class="gallery-item-content">
-                                <div class="gallery-link">
-                                    <a href="{{ asset("assets/images/halls/$hall->id/images/$image->id/$image->image") }}">
-                                            <i class="ri-add-fill"></i>
+
+        <div class="gallery-area gallery-popup ptb-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    @foreach ($hall->images as $image)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-gallery">
+                                <img src="{{ asset("assets/images/halls/$hall->id/images/$image->id/$image->image") }}" alt="Image">
+
+                                <div class="gallery-item-content">
+                                    <div class="gallery-link">
+                                        <a href="{{ asset("assets/images/halls/$hall->id/images/$image->id/$image->image") }}">
+                                                <i class="ri-add-fill"></i>
                                         </a>
+                                        @if(isset($path) && $path == 'supervisor')
+                                            <a title="تعديل"  href="{{ route('supervisor.hall.editimage',['id'=>$image->id]) }}" class="edit" style="color:green;font-size:20px">
+                                                <i class="ri-edit-2-line"></i>
+                                            </a>
+                                            <form action="{{route('supervisor.hall.deleteimage',['id'=>$image->id])}}" method="post">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="remove" title="حذف" type="submit"><i class="ri-delete-bin-line"></i></button>
+                                            </form>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-
-
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
     <!-- End Gallery Area -->
     </div>
 </section>

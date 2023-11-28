@@ -93,6 +93,7 @@ Route::middleware(['auth:supervisor'])->name('supervisor.')->prefix('supervisor'
         Route::get('/index', 'HallController@index')->name('index');
         Route::get('/create', 'HallController@create')->name('create');
         Route::get('/show', 'HallController@show')->name('show');
+        Route::get('/showtable', 'HallController@showTable')->name('showTable');
         Route::get('/editimage', 'HallController@editImage')->name('editimage');
         Route::get('/deleteimage', 'HallController@deleteImage')->name('deleteimage');
         Route::get('/edit', 'HallController@edit')->name('edit');
