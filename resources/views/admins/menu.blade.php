@@ -10,6 +10,24 @@
                     </a>
             </li>
             <li>
+                <a href="{{ route('admin.service.index') }}">
+                        إدارة الخدمات
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.supervisor.index') }}">
+                        إدارة المشرفين
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.professor.index') }}">
+                        اعضاء هيئة التدريس
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.profile') }}">
                         البروفايل
                         <i class="ri-arrow-left-s-line"></i>
@@ -24,18 +42,6 @@
             <li>
                 <a href="{{ route('admin.settings') }}">
                         تعديل البروفايل
-                        <i class="ri-arrow-left-s-line"></i>
-                    </a>
-            </li>
-            <li>
-                <a href="{{ route('admin.service.index') }}">
-                        إدارة الخدمات
-                        <i class="ri-arrow-left-s-line"></i>
-                    </a>
-            </li>
-            <li>
-                <a href="{{ route('admin.supervisor.index') }}">
-                        إدارة المشرفين
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
             </li>

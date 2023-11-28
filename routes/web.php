@@ -53,8 +53,19 @@ Route::middleware(['auth:admin'])->name('admin.')->prefix('admin')->group(functi
     Route::prefix('/supervisor')->name('supervisor.')->group(function () {
         Route::get('/index', 'SupervisorController@index')->name('index');
         Route::get('/show', 'SupervisorController@show')->name('show');
+        Route::get('/showhall', 'HallController@showHall')->name('showHall');
+        Route::get('/showhalltable', 'HallController@showHallTable')->name('showHallTable');
         Route::get('/accept', 'SupervisorController@accept')->name('accept');
         Route::get('/reject', 'SupervisorController@reject')->name('reject');
+
+    });
+
+
+    Route::prefix('/professor')->name('professor.')->group(function () {
+        Route::get('/index', 'ProfessorController@index')->name('index');
+        Route::get('/show', 'ProfessorController@show')->name('show');
+        Route::get('/showtable', 'ProfessorController@showTable')->name('showTable');
+        Route::get('/showhall', 'HallController@professorShowHall')->name('showHall');
 
     });
 });

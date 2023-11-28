@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Supervisor;
 
+use App\Models\Hall;
+use App\Models\Reserve;
+
+use App\Models\Supervisor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,9 +62,13 @@ class SupervisorController extends Controller
     }
 
     public function show(Request $r) {
-
-
+        $supervisor = Supervisor::whereId($r->id)->first();
+        return view('admins.supervisors.show',compact('supervisor'));
     }
+
+
+
+
 
 
 

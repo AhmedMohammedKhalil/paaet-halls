@@ -56,6 +56,7 @@
                                 <td class="product-name">
                                     {{ $s->email }}
                                 </td>
+
                                 <td class="product-name">
                                     @if($s->is_approved == Null)
                                         لم يتم الرد

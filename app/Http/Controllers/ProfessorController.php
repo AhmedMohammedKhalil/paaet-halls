@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Professor;
+use App\Models\Reserve;
 
+use App\Models\Professor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,6 +55,36 @@ class ProfessorController extends Controller
     public function showNotification() {
 
     }
+
+
+
+    public function index() {
+        $professors = Professor::all();
+        return view('admins.professors.index',compact('professors'));
+    }
+
+    public function show(Request $r) {
+        $professor = Professor::whereId($r->id)->first();
+        return view('admins.professors.show',compact('professor'));
+    }
+
+    public function showTable(Request $r) {
+        $events = [];
+        $professorReserves = Reserve::where('professor_id',$r->id)->get();
+        foreach($professorReserves as $reserve) {
+            $events[] = [
+                'title' => $reserve->professor->name,
+                'start' => $reserve->start_at,
+                'end'=> $reserve->end_at,
+                'backgroundColor' => '#62442e',
+                'borderColor' => '#62442e'
+            ];
+        }
+        return view('table',compact('events'));
+    }
+
+
+
 
 
 

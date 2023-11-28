@@ -1,4 +1,11 @@
 @extends('layouts.main')
+@push('css')
+    <style>
+        .single-study{
+            height: 300px;
+        }
+    </style>
+@endpush
 @push('title')
     <div class="page-title-content">
         <h2>من نحن</h2>
@@ -32,7 +39,7 @@
                     <h2>من نحن</h2>
 
                     <p>نحن مجموعه من الطلاب الخريجين قمنا بعمل موقع الكترونى لمشروع تخرجنا ليخدم جميع اعضاء هيئة التدريس  وتسهيل لهم حجز القاعات وتنظيم لهم عملية الحجز ومعرفة كافة التفاصيل عن القاعات قبل حجزها وايضا طريقة للتواصل مع المشرفين والقائمين والمسئولين عن القاعات<p>
-                        
+
                 </div>
             </div>
         </div>
@@ -50,27 +57,26 @@
                 <div class="single-study study-f3f3f4">
                     <i class="flaticon-finance"></i>
                     <h3>
-                        <a href="#">Administrative studies</a>
+                        <a href="javascript:void(0)">حجز القاعات</a>
                     </h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil odio dolorum voluptatibus inventore, non sint repellat mollitia omnis? Velit fugiat optio odio illum quas doloremque quis</p>
+                    <p>نقدم خدمات حجز القاعات لمختلف الفعاليات بما في ذلك المؤتمرات والورش العلمية والفعاليات الثقافية</p></div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-study study-f3f3f4">
+                    <i class="flaticon-finance"></i>
+                    <h3>
+                        <a href="javascript:void(0)">الدعم الكامل</a>
+                    </h3>
+                    <p>دعم كامل لتنظيم الفعاليات، بما في ذلك ترتيبات التجهيز والتنسيق مع الخدمات الإضافية</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="single-study study-f3f3f4">
                     <i class="flaticon-finance"></i>
                     <h3>
-                        <a href="#">Administrative studies</a>
+                        <a href="javascript:void(0)">خيارات مرنه للحجز</a>
                     </h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil odio dolorum voluptatibus inventore, non sint repellat mollitia omnis? Velit fugiat optio odio illum quas doloremque quis</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-study study-f3f3f4">
-                    <i class="flaticon-finance"></i>
-                    <h3>
-                        <a href="#">Administrative studies</a>
-                    </h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil odio dolorum voluptatibus inventore, non sint repellat mollitia omnis? Velit fugiat optio odio illum quas doloremque quis</p>
+                    <p>خيارات مرنة للحجز، مع توفير فترات زمنية متنوعة لتناسب جداول الفعاليات المختلفة</p>
                 </div>
             </div>
 

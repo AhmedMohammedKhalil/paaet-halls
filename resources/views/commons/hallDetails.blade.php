@@ -9,7 +9,7 @@
         .single-study{
             transition: all 1s;
             border-radius:20px;
-            overflow: hidden; 
+            overflow: hidden;
             text-align: center;
             padding: 20px;
         }
@@ -54,9 +54,17 @@
                         </li>
                     </ul>
 
-                        <a href="{{ route('showhalltable',['id'=>$hall->id]) }}" class="default-btn mr-20">
-                                عرض الجدول
-                        </a>
+                        @if(isset($path) && $path == 'admin')
+                            <a href="{{ route('admin.supervisor.showHallTable',['id'=>$hall->id]) }}" class="default-btn mr-20">
+                                    عرض الجدول
+                            </a>
+                        @elseif(isset($path) && $path == 'professor')
+
+                        @else
+                            <a href="{{ route('showhalltable',['id'=>$hall->id]) }}" class="default-btn mr-20">
+                                    عرض الجدول
+                            </a>
+                        @endif
                         @if($search == 'search' && auth('professor')->check() )
                         <a href="#" class="default-btn">
                                 حجز
@@ -95,7 +103,7 @@
             <h2>جيمع الخدمات</h2>
         </div>
         @if(count($hall->services) > 4)
-            <div class="row justify-content-center">    
+            <div class="row justify-content-center">
                 <div class="study-slider owl-carousel owl-theme">
                     @foreach($hall->services as $service)
                         <div class="single-study">
@@ -149,7 +157,7 @@
                         </div>
                     </div>
                 @endforeach
-                
+
 
             </div>
         </div>

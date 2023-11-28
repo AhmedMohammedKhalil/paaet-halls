@@ -1,11 +1,14 @@
 @extends('layouts.main')
 @push('css')
-<link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
+{{-- <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" /> --}}
 <style>
     .fc-view-harness ,.fc-toolbar-title{
         direction: rtl
+    }
+    .fc-view-harness{
+        height: 1160px !important;
     }
     .fc-event-main {
         text-align: center
@@ -15,14 +18,6 @@
 @push('title')
     <div class="page-title-content">
         <h2>الجدول</h2>
-        <ul>
-            <li>
-                <a href="{{ route('home') }}">
-                    الرئيسية
-                </a>
-            </li>
-            <li class="active">الجدول</li>
-        </ul>
     </div>
 @endpush
 @section('content')
@@ -34,7 +29,8 @@
 
 @endsection
 @push('js')
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script> --}}
+    <script src="{{ asset('assets/js/index.global.min.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -50,9 +46,10 @@
             today:    'اليوم',
             day:      'يوم',
             week:     'الاسبوع',
+            month: 'شهر'
             },
             headerToolbar: {
-            left: 'next,prev today',
+            left: 'today prev,next',
             center: 'title',
             right: 'timeGridWeek,timeGridDay'
             },
