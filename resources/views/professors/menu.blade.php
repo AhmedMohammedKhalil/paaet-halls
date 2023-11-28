@@ -22,8 +22,8 @@
                     </a>
             </li>
             <li>
-                <a href="{{ route('professor.settings') }}">
-                    جدول حجوزات القاعات
+                <a href="{{ route('professor.allbooking') }}">
+                    القاعات المحجوزة
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
             </li>

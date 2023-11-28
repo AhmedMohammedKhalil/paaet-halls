@@ -83,9 +83,9 @@
             <img src="{{ asset('assets/images/banner/video-img.jpg') }}" alt="Image">
 
             <div class="video-button">
-                <a href="https://www.youtube.com/watch?v=rl93WvCJt-U" class="popup-youtube video-btn">
-                        <i class="flaticon-play-button"></i>
-                    </a>
+                <a href="{{ asset("assets/images/halls/$hall->id/video/$hall->video") }}" class="video-btn">
+                    <i class="flaticon-play-button"></i>
+                </a>
             </div>
 
             <div class="shape-1">
@@ -94,6 +94,33 @@
         </div>
     </div>
 </section>
+
+@push('js')
+<script>
+    $(document).ready(function() {
+
+        $('.video-btn').magnificPopup({
+            disableOn: 700,
+            type: 'iframe',
+            mainClass: 'mfp-fade',
+            removalDelay: 160,
+            preloader: false,
+            fixedContentPos: false,
+            iframe: {
+                markup: '<div class="mfp-iframe-scaler">'+
+                    '<div class="mfp-close"></div>'+
+                    '<iframe class="mfp-iframe" frameborder="0" allowfullscreen srcdoc="<html style=\'overflow:hidden\'><video autoplay style=\'width:100%;height:auto;overflow:hidden\' controls><source src=\'{{  asset("assets/images/halls/$hall->id/video/$hall->video")   }}\' type=\'video/mp4\' />Your browser does not support this video format.</video></html>">'+
+                    '</iframe>'+
+                '</div>',
+
+            }
+
+        });
+
+    });
+</script>
+@endpush
+
 @endif
 <!-- End Banner Area -->
  <!-- Start Study Area -->
@@ -167,3 +194,4 @@
 </section>
 @endif
 <!-- End Study Area -->
+

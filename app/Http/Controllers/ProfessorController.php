@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Reserve;
+use App\Models\Hall;
 
+use App\Models\Reserve;
 use App\Models\Professor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +44,29 @@ class ProfessorController extends Controller
     }
 
     public function allbooking() {
+        return view('professors.halls.allbookings');
+    }
 
+    public function professorShowHall(Request $r)
+    {
+        $hall = Hall::whereId($r->id)->first();
+        $search = '';
+        return view('professors.halls.showhall',compact('hall','search'));
+    }
+
+    public function showMyTable() {
+        $events = [];
+        $professorReserves = Reserve::where('professor_id',auth('professor')->user()->id)->get();
+        foreach($professorReserves as $reserve) {
+            $events[] = [
+                'title' => $reserve->professor->name,
+                'start' => $reserve->start_at,
+                'end'=> $reserve->end_at,
+                'backgroundColor' => '#62442e',
+                'borderColor' => '#62442e'
+            ];
+        }
+        return view('table',compact('events'));
     }
 
 
@@ -82,6 +105,8 @@ class ProfessorController extends Controller
         }
         return view('table',compact('events'));
     }
+
+
 
 
 

@@ -21,7 +21,8 @@ class HomeController extends Controller
     {
         $buildings = Building::limit(10)->get();
         $halls = Hall::limit(10)->get();
-        return view('home',compact('buildings','halls'));
+        $video = 'video.mp4';
+        return view('home',compact('buildings','halls','video'));
     }
 
 

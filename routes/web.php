@@ -110,6 +110,8 @@ Route::middleware(['auth:professor'])->name('professor.')->prefix('professor')->
     Route::get('/changePassword', 'ProfessorController@changePassword')->name('changePassword');
     Route::get('/logout', 'ProfessorController@logout')->name('logout');
     Route::get('/allbooking', 'ProfessorController@allbooking')->name('allbooking');
+    Route::get('/showhall', 'ProfessorController@professorShowHall')->name('showHall');
+    Route::get('/showtable', 'ProfessorController@showMyTable')->name('showTable');
     Route::get('/allnotifications', 'ProfessorController@allNotifications')->name('allnotifications');
     Route::get('/shownotification', 'ProfessorController@showNotifications')->name('shownotification');
 
