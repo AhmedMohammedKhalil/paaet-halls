@@ -30,6 +30,13 @@
             height: 400px;
             width:100%;
         }
+        .trash{
+                padding-top: 25px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                border: none  !important;
+        }
     </style>
 @endpush
 
@@ -66,7 +73,7 @@
                         <tbody>
                             @foreach($buildings as $building)
                             <tr>
-                                <td class="product-name">
+                                <td class="product-thumbnail">
                                                 @if ($building->image != null)
                                                     <img src="{{asset('assets/images/buildings/'.$building->id.'/'.$building->image)}}" alt="img" class="w-7 h-7 br-7 me-3">
                                                 @else
@@ -82,16 +89,19 @@
                                 <td class="product-name">
                                     {{ $building->address }}
                                 </td>
-                                @if(count($building->halls) == 0)
-                                    <td class="trash" style="display: flex;justify-content: space-evenly;">
+                                <td class="trash" >
                                         <a title="تعديل"  href="{{ route('supervisor.building.edit',['id'=>$building->id]) }}" class="edit" style="color:green;font-size:20px">
                                             <i class="ri-edit-2-line"></i>
                                         </a>
-                                        <form action="{{route('supervisor.building.delete',['id'=>$building->id])}}" method="post">
-                                            @method('delete')
-                                            @csrf
-                                            <button class="remove" style="background: unset" title="حذف" type="submit"><i class="ri-delete-bin-line"></i></button>
-                                        </form>
+                                        <a title="عرض"  href="{{ route('supervisor.building.show',['id'=>$building->id]) }}" class="show" style="color:blue;font-size:20px">
+                                            <i class="ri-eye-line"></i>
+                                        </a>
+                                        @if(count($building->halls) == 0)
+                                            <form action="{{route('supervisor.building.delete',['id'=>$building->id])}}" method="post">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="remove" style="background: unset" title="حذف" type="submit"><i class="ri-delete-bin-line"></i></button>
+                                            </form>
                                     </td>
                                 @endif
                             </tr>
