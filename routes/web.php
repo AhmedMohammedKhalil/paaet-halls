@@ -30,6 +30,7 @@ Route::middleware(['guest:admin', 'guest:supervisor', 'guest:professor'])->group
     Route::get('/admin/login', 'AdminController@showLoginForm')->name('admin.login');
     Route::get('/supervisor/login', 'SupervisorController@showLoginForm')->name('supervisor.login');
     Route::get('/supervisor/register', 'SupervisorController@showRegisterForm')->name('supervisor.register');
+    Route::get('/supervisor/approval', 'SupervisorController@waitapproval')->name('supervisor.approval');
     Route::get('professor/login', 'ProfessorController@showLoginForm')->name('professor.login');
     Route::get('/professor/register', 'ProfessorController@showRegisterForm')->name('professor.register');
 });

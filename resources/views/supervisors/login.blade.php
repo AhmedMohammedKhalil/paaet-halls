@@ -2,14 +2,14 @@
 @extends('layouts.main')
 @push('title')
     <div class="page-title-content">
-        <h2>تسجيل دخول المسئول</h2>
+        <h2>تسجيل دخول المشرف</h2>
         <ul>
             <li>
                 <a href="{{ route('home') }}">
                     الرئيسية
                 </a>
             </li>
-            <li class="active">تسجيل دخول المسئول</li>
+            <li class="active">تسجيل دخول المشرف</li>
         </ul>
     </div>
 @endpush

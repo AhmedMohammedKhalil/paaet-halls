@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Supervisor;
 
+use App\Models\Supervisor;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -12,7 +13,7 @@ class Login extends Component
     public $password;
 
     protected $rules = [
-        'email'   => 'required|email|exists:companies,email',
+        'email'   => 'required|email|exists:supervisors,email',
         'password' => 'required|min:8'
     ];
 
@@ -25,12 +26,18 @@ class Login extends Component
 
     public function login(){
         $validatedData = $this->validate();
-        if(Auth::guard('company')->attempt($validatedData)){
+        $supervisor=Supervisor::where('email',$validatedData['email'])->first();
+        if($supervisor->is_approved == "انتظار"){
+            return redirect()->route('supervisor.approval');
+        }
+        else if($supervisor->is_approved =="تمت الموافقة"){
+            if(Auth::guard('supervisor')->attempt($validatedData)){
 
-            session()->flash('message', "تم دخولك ينجاح");
-            return redirect()->route('home');
-        }else{
-            session()->flash('error', 'هناك خطا فى الايميل او الباسورد');
+                session()->flash('message', "تم دخولك ينجاح");
+                return redirect()->route('home');
+            }else{
+                session()->flash('error', 'هناك خطا فى الايميل او الباسورد');
+            }
         }
     }
 

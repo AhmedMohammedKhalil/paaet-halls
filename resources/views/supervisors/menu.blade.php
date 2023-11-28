@@ -10,18 +10,6 @@
                     </a>
             </li>
             <li>
-                <a href="{{ route('supervisor.changePassword') }}">
-                        تعديل كلمة السر
-                        <i class="ri-arrow-left-s-line"></i>
-                    </a>
-            </li>
-            <li>
-                <a href="{{ route('supervisor.settings') }}">
-                        تعديل البروفايل
-                        <i class="ri-arrow-left-s-line"></i>
-                    </a>
-            </li>
-            <li>
                 <a href="{{ route('supervisor.building.index') }}">
                         إدارة المبانى
                         <i class="ri-arrow-left-s-line"></i>
@@ -30,6 +18,18 @@
             <li>
                 <a href="{{ route('supervisor.hall.index') }}">
                         إدارة القاعات
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
+                <a href="{{ route('supervisor.changePassword') }}">
+                        تعديل كلمة السر
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
+                <a href="{{ route('supervisor.settings') }}">
+                        تعديل البروفايل
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
             </li>

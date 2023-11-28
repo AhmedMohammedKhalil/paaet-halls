@@ -68,8 +68,9 @@ class SupervisorController extends Controller
 
 
 
-
-
-
+    public function waitapproval()
+    {
+        return view('supervisors.waiting');
+    }
 
 }

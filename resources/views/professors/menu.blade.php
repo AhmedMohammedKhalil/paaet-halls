@@ -10,6 +10,12 @@
                     </a>
             </li>
             <li>
+                <a href="{{ route('professor.allbooking') }}">
+                    القاعات المحجوزة
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
                 <a href="{{ route('professor.changePassword') }}">
                         تعديل كلمة السر
                         <i class="ri-arrow-left-s-line"></i>
@@ -21,12 +27,7 @@
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
             </li>
-            <li>
-                <a href="{{ route('professor.allbooking') }}">
-                    القاعات المحجوزة
-                        <i class="ri-arrow-left-s-line"></i>
-                    </a>
-            </li>
+
             <li>
                 <a href="{{ route('professor.allnotifications') }}">
                         الإشعارات

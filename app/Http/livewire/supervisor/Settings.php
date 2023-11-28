@@ -55,20 +55,21 @@ class Settings extends Component
         $validatedata = $this->validate(
             array_merge(
                 $this->rules,
-                [ 'email'   => ['required','email',"unique:companies,email,".$this->supervisor_id],
+                [ 'email'   => ['required','email',"unique:supervisors,email,".$this->supervisor_id],
         ]));
         if(!$this->image)
             Supervisor::whereId($this->supervisor_id)->update($validatedata);
         if($this->image) {
             $imagename = $this->image->getClientOriginalName();
-            supervisor::whereId($this->supervisor_id)->update(array_merge($validatedata,['image' => $imagename]));
-            $dir = public_path('img/supervisors/'.$this->supervisor_id);
+            Supervisor::whereId($this->supervisor_id)->update(array_merge($validatedata,['image' => $imagename]));
+            $path = '/images/supervisors/'.$this->supervisor_id;
+            $dir = public_path('assets'.$path);
             if(file_exists($dir))
                 File::deleteDirectories($dir);
             else
                 mkdir($dir);
-            $this->image->storeAs($dir,$imagename);
-            File::deleteDirectory(public_path('uploads/livewire-tmp'));
+            $this->image->storeAs($path,$imagename);
+            File::deleteDirectory(public_path('assets/livewire-tmp'));
         }
         session()->flash('message', "Your Profile Updated.");
         return redirect()->route('supervisor.profile');
