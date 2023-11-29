@@ -87,7 +87,7 @@
     // Gallery Popup JS
     $('.gallery-popup').each(function() {
         $(this).magnificPopup({
-            delegate: 'a',
+            delegate: 'a.image',
             type: 'image',
             gallery: {
                 enabled: true

@@ -1,6 +1,5 @@
-
 <form class="find-courses-from-bg find-courses-from-bg-three mt-0" wire:submit.prevent='edit'>
-    <h3> اضافة قاعة</h3>
+    <h3> تعديل قاعة</h3>
     @if (session()->has('error'))
     <div class="alert alert-danger">
         {{ session('error') }}
@@ -15,11 +14,11 @@
         </div>
 
         <div class="col-12">
+            <label for="capacity">السعة</label>
             <div class="form-group">
                 <select class="form-control" wire:model.lazy='capacity'>
-                        <option value="1" disabled>السعة</option>
                         @foreach ($capacities as $c)
-                            <option value="{{ $c }}"  @if($c == $capacity) selected @endif>{{ $c }}</option>
+                            <option value="{{ $c }}" @if($c == $capacity) selected @endif>{{ $c }}</option>
                         @endforeach
                     </select>
                 <i class="ri-arrow-down-s-line"></i>
@@ -29,11 +28,11 @@
         </div>
 
         <div class="col-12">
+            <label for="gender">النوع</label>
             <div class="form-group">
                 <select class="form-control" wire:model.lazy='gender'>
-                        <option value="1" disabled>النوع</option>
-                        <option value="بنين" @if($gender == 'بنين') selected @endif>بنين</option>
-                        <option value="بنات" @if($gender == 'بنات') selected @endif>بنات</option>
+                    <option value="بنين" @if($gender == 'بنين') selected @endif>بنين</option>
+                    <option value="بنات" @if($gender == 'بنات') selected @endif>بنات</option>
                     </select>
                 <i class="ri-arrow-down-s-line"></i>
                 @error('gender') <span class="text-danger error">{{ $message }}</span>@enderror
@@ -41,9 +40,9 @@
             </div>
         </div>
         <div class="col-12">
+            <label for="building">المبني</label>
             <div class="form-group">
                 <select class="form-control" wire:model.lazy='building_id'>
-                        <option value="1" disabled>المبنى</option>
                         @foreach ($buildings as $b)
                             <option value="{{ $b->id }}" @if($b->id == $building_id) selected @endif>{{ $b->title }}</option>
                         @endforeach
@@ -54,9 +53,9 @@
             </div>
         </div>
         <div class="col-12">
+            <label for="services">الخدمات</label>
             <div class="form-group">
                 <select class="form-control" multiple style="height: 100px" wire:model.lazy='services'>
-                        <option value="0" disabled>الخدمات</option>
                         @foreach ($servicesModel as $s)
                             <option value="{{ $s->id }}" @if(in_array($s->id, $serviesArr)) selected @endif>{{ $s->name }}</option>
                         @endforeach
@@ -100,7 +99,7 @@
             </div>
         </div>
         <div class="col-12">
-            <button type="submit" class="btn default-btn">إضافة</button>
+            <button type="submit" class="btn default-btn">تعديل</button>
         </div>
     </div>
 </form>

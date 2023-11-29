@@ -64,13 +64,13 @@ class AddHall extends Component
         $validatedata = $this->validate(
             ['video' => ['mimes:mp4,mkv,flv', 'max:102400']]
         );
-    } 
+    }
     public function updatedImages()
     {
         $validatedata = $this->validate(
             ['images.*' => ['image', 'mimes:jpeg,jpg,png', 'max:2048']]
         );
-    } 
+    }
 
 
     public function add(){
@@ -92,8 +92,8 @@ class AddHall extends Component
         mkdir($dir.'/images');
         $this->cover->storeAs($path.'/cover',$imagename);
         if($this->video) {
-            $hall->update(['video',$this->video]);
             $videoname = $this->video->getClientOriginalName();
+            $hall->update(array_merge($validatedData,['cover'=> $imagename,'video'=>$videoname]));
             $this->video->storeAs($path.'/video',$videoname);
         }
         if(isset($this->images) && count($this->images) > 0) {
@@ -108,7 +108,7 @@ class AddHall extends Component
                 else {
                     mkdir($dir.'/images/'.$img->id);
                 }
-                $image->storeAs($dir.'/images/'.$img->id,$imageName);
+                $image->storeAs($path.'/images/'.$img->id,$imageName);
             }
         }
         File::deleteDirectory(public_path('assets/livewire-tmp'));

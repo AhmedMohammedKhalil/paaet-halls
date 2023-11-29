@@ -10,7 +10,7 @@ use App\Models\Hall;
 class EditHall extends Component
 {
 
-    public $details, $gender,$hall, $hall_id, $number,$buildings,$building_id, $supervisor_id, $capacities, $capacity, $cover, $video, $servicesModel, $services,$serviesArr, $images;
+    public $details, $gender,$hall, $hall_id, $number,$buildings,$building_id, $supervisor_id, $capacities, $capacity, $cover, $video, $servicesModel, $services,$serviesArr, $images=[];
 
     public function mount($hall_id) {
         $this->servicesModel = Service::all();
@@ -52,6 +52,7 @@ class EditHall extends Component
 
     public function edit() {
     }
+
     public function render()
     {
         return view('livewire.supervisor.edit-hall');

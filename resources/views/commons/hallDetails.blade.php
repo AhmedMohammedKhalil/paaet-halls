@@ -31,6 +31,16 @@
         .single-gallery{
             height: 238px;
         }
+
+        .single-gallery img{
+            width: 348px;
+            height: 238px;
+        }
+
+        img.mfp-img {
+            width: 730px;
+            height: 500px;
+        }
     </style>
 @endpush
 <section class="product-details-area ptb-100">
@@ -217,7 +227,7 @@
 
                                 <div class="gallery-item-content">
                                     <div class="gallery-link" style="display: flex">
-                                        <a href="{{ asset("assets/images/halls/$hall->id/images/$image->id/$image->image") }}">
+                                        <a class="image" href="{{ asset("assets/images/halls/$hall->id/images/$image->id/$image->image") }}">
                                                 <i class="ri-add-fill"></i>
                                         </a>
                                         @if(isset($path) && $path == 'supervisor')
