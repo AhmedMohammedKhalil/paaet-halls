@@ -19,8 +19,9 @@ class HallController extends Controller
     }
 
 
-    public function edit() {
-        return view('supervisors.halls.edit');
+    public function edit(Request $r) {
+
+        return view('supervisors.halls.edit',['hall_id'=>$r->id]);
 
     }
 

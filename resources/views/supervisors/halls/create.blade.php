@@ -18,6 +18,9 @@
         ::placeholder {
             color: rgb(92, 92, 92) !important
         }
+        /* option[selected] {
+            background: antiquewhite;
+        } */
     </style>
 @endpush
 @push('title')
