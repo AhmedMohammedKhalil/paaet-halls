@@ -4,8 +4,8 @@
         <h2>المباني</h2>
         <ul>
             <li>
-                <a href="{{ route('home') }}">
-                    الرئيسية
+                <a href="{{ route('supervisor.profile') }}">
+                    البروفايل
                 </a>
             </li>
             <li class="active">المباني</li>

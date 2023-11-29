@@ -4,8 +4,8 @@
         <h2>تعديل المبني </h2>
         <ul>
             <li>
-                <a href="{{ route('admin.dashboard') }}">
-                    لوحة التحكم
+                <a href="{{ route('supervisor.profile') }}">
+                    البروفايل
                 </a>
             </li>
             <li class="active">تعديل المبني </li>

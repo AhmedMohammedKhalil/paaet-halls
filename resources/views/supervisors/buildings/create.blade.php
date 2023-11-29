@@ -4,8 +4,8 @@
         <h2>اضافة مبني جديد</h2>
         <ul>
             <li>
-                <a href="{{ route('admin.dashboard') }}">
-                    لوحة التحكم
+                <a href="{{ route('supervisor.profile') }}">
+                    البروفايل
                 </a>
             </li>
             <li class="active">اضافة مبني جديد</li>

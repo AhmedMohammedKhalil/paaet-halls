@@ -28,12 +28,12 @@
                     </a>
             </li>
 
-            <li>
+            {{-- <li>
                 <a href="{{ route('professor.allnotifications') }}">
                         الإشعارات
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('professor.logout') }}">
                         خروج

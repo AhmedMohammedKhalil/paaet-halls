@@ -15,12 +15,12 @@
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('supervisor.hall.index') }}">
                         إدارة القاعات
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('supervisor.changePassword') }}">
                         تعديل كلمة السر
@@ -33,12 +33,12 @@
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('supervisor.allnotifications') }}">
                         الإشعارات
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('supervisor.logout') }}">
                         خروج

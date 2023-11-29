@@ -85,9 +85,9 @@
                             <li class="nav-item">
                                 <a href="{{ route('allhalls') }}" class="nav-link">القاعات</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('search') }}" class="nav-link">بحث</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a href="{{ route('aboutus') }}" class="nav-link">من نحن</a>
                             </li>
