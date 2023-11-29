@@ -23,7 +23,7 @@
             </li>
             <li>
                 <a href="{{ route('admin.professor.index') }}">
-                        اعضاء هيئة التدريس
+                        اعضاء الهيئة التدريسية
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
             </li>

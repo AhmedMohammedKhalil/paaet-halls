@@ -9,7 +9,7 @@
             </li>
             @else
             <li>
-                <a href="{{ route('allbuildings') }}">جميع المبانى</a>
+                <a href="{{ route('allbuildings') }}">جميع المباني</a>
             </li>
             @endif
             <li class="active">تفاصيل المبنى</li>
