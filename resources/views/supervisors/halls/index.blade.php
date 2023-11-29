@@ -28,7 +28,7 @@
             </a>
         @endif
         <!-- Start Wishlist Area -->
-    <section class="wishlist-area ">
+    <section class="wishlist-area ptb-100">
         <div class="container">
                 <div class="cart-table">
                     <table class="table table-bordered">
@@ -63,15 +63,12 @@
                                 <td class="product-name">
                                     {{ $h->gender }}
                                 </td>
+                                <td class="trash" style="display: flex;justify-content: space-evenly;">
 
-                                    @if(count($h->professors) > 0)
-                                    <td class="trash" style="">
                                         <a title="عرض"  href="{{ route('supervisor.hall.show',['id'=>$h->id]) }}" class="show" style="color:blue;font-size:20px">
                                             <i class="ri-eye-line"></i>
                                         </a>
-                                    </td>
-                                    @else
-                                    <td class="trash" style="display: flex;justify-content: space-evenly;">
+                                    @if(count($h->professors) == 0)
                                         <a title="تعديل"  href="{{ route('supervisor.hall.edit',['id'=>$h->id]) }}" class="edit" style="color:green;font-size:20px">
                                             <i class="ri-edit-2-line"></i>
                                         </a>
@@ -80,8 +77,9 @@
                                             @csrf
                                             <button class="remove" style="background: unset" title="حذف" type="submit"><i class="ri-delete-bin-line"></i></button>
                                         </form>
-                                    </td>
+
                                     @endif
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

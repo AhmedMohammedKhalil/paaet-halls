@@ -49,6 +49,13 @@
     <title>{{ config('app.name', 'PAAET HALLS') }}</title>
     @livewireStyles
     @stack('css')
+    <style>
+        table .trash{
+            padding-top: 30px !important;
+            padding-bottom: 30px !important;
+
+        }
+    </style>
 
 </head>
 

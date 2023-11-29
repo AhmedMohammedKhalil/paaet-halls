@@ -26,10 +26,7 @@
         h4{
             font-weight: 600
         }
-        .single-team-member img{
-            height: 400px;
-            width:100%;
-        }
+
         .trash{
                 padding-top: 25px;
                 display: flex;
@@ -54,7 +51,7 @@
         </div>
 
         <!-- Start Wishlist Area -->
-    <section class="wishlist-area  ptb-100">
+    <section class="wishlist-area ptb-100">
         <div class="container">
                 <div class="cart-table">
                     <table class="table table-bordered">
@@ -63,10 +60,9 @@
 
                                 <th scope="col">#</th>
                                 <th scope="col">اسم المبني</th>
-                                <th scope="col">التفاصيل</th>
                                 <th scope="col">العنوان</th>
                                 <th scope="col">الأعدادات</th>
-                            
+
                             </tr>
                         </thead>
 
@@ -74,20 +70,17 @@
                             @foreach($buildings as $building)
                             <tr>
                                 <td class="product-thumbnail">
-                                                @if ($building->image != null)
-                                                    <img src="{{asset('assets/images/buildings/'.$building->id.'/'.$building->image)}}" alt="img" class="w-7 h-7 br-7 me-3">
-                                                @else
-                                                    <img src="{{asset('assets/images/buildings/building.JPG')}}" alt="img" class="w-7 h-7 br-7 me-3">                      
-                                                @endif
+                                    <a href="javascript:void(0)">
+                                        <img src="{{asset('assets/images/buildings/'.$building->id.'/'.$building->image)}}" alt="Image">
+                                    </a>
+
                                 </td>
                                 <td class="product-name">
                                     {{ $building->title }}
                                 </td>
+
                                 <td class="product-name">
-                                    {{ $building->details }}
-                                </td>
-                                <td class="product-name">
-                                    {{ $building->address }}
+                                    {!! nl2br($building->address) !!}
                                 </td>
                                 <td class="trash" >
                                         <a title="تعديل"  href="{{ route('supervisor.building.edit',['id'=>$building->id]) }}" class="edit" style="color:green;font-size:20px">

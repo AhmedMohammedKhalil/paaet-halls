@@ -212,11 +212,11 @@
                 <div class="row justify-content-center">
                     @foreach ($hall->images as $image)
                         <div class="col-lg-4 col-md-6">
-                            <div class="single-gallery">
+                            <div class="single-gallery" >
                                 <img src="{{ asset("assets/images/halls/$hall->id/images/$image->id/$image->image") }}" alt="Image">
 
                                 <div class="gallery-item-content">
-                                    <div class="gallery-link">
+                                    <div class="gallery-link" style="display: flex">
                                         <a href="{{ asset("assets/images/halls/$hall->id/images/$image->id/$image->image") }}">
                                                 <i class="ri-add-fill"></i>
                                         </a>

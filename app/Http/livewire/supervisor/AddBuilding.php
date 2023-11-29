@@ -33,7 +33,8 @@ class AddBuilding extends Component
         'title' => ['required', 'string', 'max:50'],
         'address' => ['required', 'string', 'max:50'],
         'details' => ['required', 'max:255'],
-        'supervisor_id' => ['required']
+        'supervisor_id' => ['required'],
+        'image' => ['image', 'mimes:jpeg,jpg,png', 'max:2048']
     ];
 
     public function updatedImage()
@@ -46,20 +47,16 @@ class AddBuilding extends Component
     public function add()
     {   $this->supervisor_id=auth('supervisor')->user()->id;
         $validatedata = $this->validate();
-        if (!$this->image)
-            Building::create($validatedata);
-        if ($this->image) {
-            $this->updatedImage();
-            $imagename = $this->image->getClientOriginalName();
-            $building = Building::create(array_merge($validatedata, ['image' => $imagename]));
-            $dir = public_path('assets/images/buildings/' . $building->id);
-            if (file_exists($dir))
-                File::deleteDirectories($dir);
-            else
-                mkdir($dir);
-            $this->image->storeAs('images/buildings/' . $building->id, $imagename);
-            File::deleteDirectory(public_path('assets/images/livewire-tmp'));
-        }
+        $imagename = $this->image->getClientOriginalName();
+        $building = Building::create(array_merge($validatedata, ['image' => $imagename]));
+        $dir = public_path('assets/images/buildings/' . $building->id);
+        if (file_exists($dir))
+            File::deleteDirectories($dir);
+        else
+            mkdir($dir);
+        $this->image->storeAs('images/buildings/' . $building->id, $imagename);
+        File::deleteDirectory(public_path('assets/images/livewire-tmp'));
+
         session()->flash('message', "تم إتمام العملية بنجاح");
         return redirect()->route('supervisor.building.index');
     }

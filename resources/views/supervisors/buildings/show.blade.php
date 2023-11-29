@@ -87,7 +87,7 @@
 
                                 </td>
                                 <td class="trash" style="">
-                                    <a title="عرض"  href="#" class="show" style="color:blue;font-size:20px">
+                                    <a title="عرض"  href="{{ route('supervisor.hall.show',['id'=>$h->id]) }}" class="show" style="color:blue;font-size:20px">
                                         <i class="ri-eye-line"></i>
                                     </a>
                                 </td>
