@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hall;
+use App\Models\Image;
 use App\Models\Reserve;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
 
 class HallController extends Controller
 {
@@ -52,11 +55,27 @@ class HallController extends Controller
         return view('supervisors.halls.editImage',['image_id'=>$r->id]);
     }
 
-    public function delete() {
-
+    public function delete(Request $r) {
+        $hall = Hall::whereId($r->id)->first();
+        $hall->services()->detach();
+        File::deleteDirectories(public_path("assets/images/halls/$hall->id"));
+        File::deleteDirectory(public_path("assets/images/halls/$hall->id"));
+        $collection = Image::where('hall_id', $hall->id)->get(['id']);
+        Image::destroy($collection->toArray());
+        Hall::whereId($hall->id)->delete();
+        session()->flash('message', "Hall Deleted Succefully");
+        return redirect()->route('supervisor.hall.index');
     }
 
-    public function deleteImage() {
+    public function deleteImage(Request $r) {
+        $image = Image::whereId($r->id)->first();
+        $hall_id = $image->hall_id;
+        File::deleteDirectories(public_path("assets/images/halls/$image->hall_id/images/$image->id"));
+        File::deleteDirectory(public_path("assets/images/halls/$image->hall_id/images/$image->id"));
+        $image->delete();
+        session()->flash('message', "Image Deleted Succefully");
+        return redirect()->route('supervisor.hall.show',['id'=>$hall_id]);
+
     }
 
 
