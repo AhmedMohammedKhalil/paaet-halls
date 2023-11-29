@@ -15,11 +15,11 @@
         </div>
 
         <div class="col-12">
+            <label for="capacity">السعة</label>
             <div class="form-group">
                 <select class="form-control" wire:model.lazy='capacity'>
-                        <option value="1" disabled selected>السعة</option>
                         @foreach ($capacities as $c)
-                            <option value="{{ $c }}">{{ $c }}</option>
+                            <option value="{{ $c }}" selected>{{ $c }}</option>
                         @endforeach
                     </select>
                 <i class="ri-arrow-down-s-line"></i>
@@ -29,10 +29,10 @@
         </div>
 
         <div class="col-12">
+            <label for="gender">النوع</label>
             <div class="form-group">
                 <select class="form-control" wire:model.lazy='gender'>
-                        <option value="1" disabled selected>النوع</option>
-                        <option value="بنين">بنين</option>
+                        <option value="بنين" selected>بنين</option>
                         <option value="بنات">بنات</option>
                     </select>
                 <i class="ri-arrow-down-s-line"></i>
@@ -41,11 +41,11 @@
             </div>
         </div>
         <div class="col-12">
+            <label for="building">المبني</label>
             <div class="form-group">
                 <select class="form-control" wire:model.lazy='building_id'>
-                        <option value="1" disabled selected>المبنى</option>
                         @foreach ($buildings as $b)
-                            <option value="{{ $b->id }}">{{ $b->title }}</option>
+                            <option value="{{ $b->id }}" selected>{{ $b->title }}</option>
                         @endforeach
                 </select>
                 <i class="ri-arrow-down-s-line"></i>
@@ -54,9 +54,9 @@
             </div>
         </div>
         <div class="col-12">
+            <label for="services">الخدمات</label>
             <div class="form-group">
                 <select class="form-control" multiple style="height: 100px" wire:model.lazy='services'>
-                        <option value="0" disabled>الخدمات</option>
                         @foreach ($servicesModel as $s)
                             <option value="{{ $s->id }}">{{ $s->name }}</option>
                         @endforeach

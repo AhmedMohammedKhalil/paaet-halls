@@ -40,8 +40,17 @@ class EditHall extends Component
 
     }
 
-    public function edit() {
+    protected $rules = [
+        'number' => ['required', 'max:50'],
+        'gender' => ['required', 'string'],
+        'capacity' => ['required', 'string'],
+        'details' => ['required', 'max:255'],
+        'supervisor_id' => ['required'],
+        'building_id' => ['required'],
+        'services' => ['required'],
+    ];
 
+    public function edit() {
     }
     public function render()
     {
