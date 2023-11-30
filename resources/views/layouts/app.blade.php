@@ -43,12 +43,20 @@
     <link rel="stylesheet" href="{{ asset('assets/css/rtl.css') }}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
-    {{-- <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}"> --}}
+    {{-- <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}"> --}}
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
     {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <title>{{ config('app.name', 'PAAET HALLS') }}</title>
     @livewireStyles
     @stack('css')
+    <style>
+        table .trash{
+            padding-top: 30px !important;
+            padding-bottom: 30px !important;
+
+        }
+    </style>
+
 </head>
 
 <body>
@@ -58,30 +66,9 @@
             <div class="pl-flip-1 pl-flip-2"></div>
         </div>
     </div>
-    <!-- End Preloader Area -->
-    @include('layouts.header')
-    @hasSection('landing')
-        @yield('landing')
-    @else
-        <div class="page-title-area bg-25" style="@if(isset($cover)) background-image:{{ $cover }} @endif">
-            <div class="container">
-                @stack('title')
-                {{-- <div class="page-title-content">
-                    <h2>Log in</h2>
-                    <ul>
-                        <li>
-                            <a href="index.html">
-                                    Home
-                            </a>
-                        </li>
-                        <li class="active">Log in</li>
-                    </ul>
-                </div> --}}
-            </div>
-        </div>
-    @endif
-    @yield('content')
 
+    @yield('main')
+    <!-- End Preloader Area -->
     <div class="copy-right-area">
         <div class="container">
             <p>
@@ -101,6 +88,8 @@
 
     <!-- Jquery Min JS -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.easing.js') }}"></script>
+
     <!-- Bootstrap Bundle Min JS -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Meanmenu Min JS -->
@@ -112,17 +101,13 @@
     <!-- Appear Min JS -->
     <script src="{{ asset('assets/js/appear.min.js') }}"></script>
     <!-- Odometer Min JS -->
-    <script src="{{ asset('assets/js/odometer.min.js') }}"></script>
+    <script src="{{ asset('assets/js/counter.min.js') }}"></script>
     <!-- Jarallax Min JS -->
     <script src="{{ asset('assets/js/jarallax.min.js') }}"></script>
     <!-- Bootstrap Datepicker Min JS -->
     <script src="{{ asset('assets/js/bootstrap-datepicker.min.js') }}"></script>
     <!-- Magnific Popup Min JS -->
     <script src="{{ asset('assets/js/magnific-popup.min.js') }}"></script>
-    <!-- Form Validator Min JS -->
-    <script src="{{ asset('assets/js/form-validator.min.js') }}"></script>
-    <!-- Contact JS -->
-    <script src="{{ asset('assets/js/contact-form-script.js') }}"></script>
     <!-- Ajaxchimp Min JS -->
     <script src="{{ asset('assets/js/ajaxchimp.min.js') }}"></script>
     <!-- Custom JS -->

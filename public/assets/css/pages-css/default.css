@@ -2,15 +2,22 @@
 Default Style
 ============================*/
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800;900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800;900&display=swap"); */
+
+@font-face {
+    font-family: cairo;
+    src: url('../../fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf');
+}
+
+
 :root {
-    --body-family: 'Open Sans', sans-serif;
-    --heading-font-family: 'Work Sans', sans-serif;
+    --body-family: 'cairo', sans-serif;
+    --heading-font-family: 'cairo', sans-serif;
     --body-color: #6b6b6b;
-    --main-color: #92210f;
+    --main-color: #62442e;
     --heading-color: #252525;
-    --optional-color: #172f41;
+    --optional-color: #9a724d;
     --white-color: #ffffff;
     --black-color: #000000;
     --font-size: 15px;

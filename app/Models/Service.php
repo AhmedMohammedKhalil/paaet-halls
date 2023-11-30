@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
+    protected $fillable = ['name'];
+
+    public function halls()
+    {
+        return $this->belongsToMany(Hall::class,'hall_services','service_id','hall_id')
+        ->using(HallService::class)->withPivot('id','hall_id','service_id')->withTimestamps();
+    }
 }

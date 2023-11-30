@@ -20,4 +20,13 @@ class Professor extends Authenticatable
         return $this->belongsToMany(Hall::class,'reserves','professor_id','hall_id')
         ->using(Reserve::class)->withPivot('id','status','start_at','end_at','date')->withTimestamps();
     }
+
+    public function supervisors()
+    {
+        return $this->belongsToMany(Supervisor::class,'notification','professor_id','supervisor_id')
+        ->using(Notification::class)->withPivot('id','type','content','author','date','hall_id')->withTimestamps();
+    }
+
+
+
 }

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\User;
+namespace App\Http\Livewire\Professor;
 
-use App\Models\User;
+use App\Models\Professor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class ChangePassword extends Component
 {
-    public $password='', $confirm_password='',$user_id='';
+    public $password='', $confirm_password='',$professor_id='';
 
 
     public function mount() {
-        $this->user_id = Auth::guard('user')->user()->id;
+        $this->professor_id = Auth::guard('professor')->user()->id;
     }
 
 
@@ -34,13 +34,13 @@ class ChangePassword extends Component
         $validatedata = $this->validate();
         $data =['password' => Hash::make($this->password)];
 
-        User::whereId($this->user_id)->update($data);
+        Professor::whereId($this->professor_id)->update($data);
         session()->flash('message', "Your Profile Updated.");
-        return redirect()->route('user.profile');
+        return redirect()->route('professor.profile');
     }
 
     public function render()
     {
-        return view('livewire.user.change-password');
+        return view('livewire.professor.change-password');
     }
 }

@@ -17,12 +17,14 @@ class BuildingSeeder extends Seeder
         DB::table('buildings')->insert([
             'title' => 'مبني 1',
             'details' =>'وصف مبني رقم 1 ',
+            'image' => 'image-1.jpg',
             'address' =>'الكويت منطقة السالمية',
             'supervisor_id' =>'1'
         ]);
         DB::table('buildings')->insert([
             'title' => 'مبني 2',
             'details' =>'وصف مبني رقم 2 ',
+            'image' => 'image-1.jpg',
             'address' =>'الكويت  الفحيحيل',
             'supervisor_id' =>'1'
         ]);
@@ -30,6 +32,7 @@ class BuildingSeeder extends Seeder
         DB::table('buildings')->insert([
             'title' => 'مبني 3',
             'details' =>'وصف مبني رقم 3 ',
+            'image' => 'image-1.jpg',
             'address' =>'الكويت  الوفرة',
             'supervisor_id' =>'1'
         ]);
@@ -37,12 +40,14 @@ class BuildingSeeder extends Seeder
         DB::table('buildings')->insert([
             'title' => 'مبني 4',
             'details' =>'وصف مبني رقم 4 ',
+            'image' => 'image-1.jpg',
             'address' =>'الكويت منطقة السالمية',
             'supervisor_id' =>'1'
         ]);
         DB::table('buildings')->insert([
             'title' => 'مبني 5',
             'details' =>'وصف مبني رقم 5 ',
+            'image' => 'image-1.jpg',
             'address' =>'الكويت  الفحيحيل',
             'supervisor_id' =>'2'
         ]);
@@ -50,6 +55,7 @@ class BuildingSeeder extends Seeder
         DB::table('buildings')->insert([
             'title' => 'مبني 6',
             'details' =>'وصف مبني رقم 6 ',
+            'image' => 'image-1.jpg',
             'address' =>'الكويت  الوفرة',
             'supervisor_id' =>'2'
         ]);

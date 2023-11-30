@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone', 8);
             $table->string('image')->nullable();
-            $table->string('is_approved');
+            $table->string('is_approved')->nullable();
             $table->text('address');
             $table->timestamps();
         });

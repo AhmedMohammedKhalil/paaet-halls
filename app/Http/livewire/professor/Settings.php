@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\User;
+namespace App\Http\Livewire\Professor;
 
-use App\Models\User;
+use App\Models\Professor;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -11,15 +11,15 @@ use Livewire\Component;
 class Settings extends Component
 {
     use WithFileUploads;
-    public $name='', $email='', $photo, $phone='', $address='',$user_id='';
+    public $name='', $email='', $image, $phone='', $address='',$professor_id='';
 
 
     public function mount() {
-        $this->user_id = Auth::guard('user')->user()->id;
-        $this->name = Auth::guard('user')->user()->name;
-        $this->email = Auth::guard('user')->user()->email;
-        $this->phone = Auth::guard('user')->user()->phone;
-        $this->address = Auth::guard('user')->user()->address;
+        $this->professor_id = Auth::guard('professor')->user()->id;
+        $this->name = Auth::guard('professor')->user()->name;
+        $this->email = Auth::guard('professor')->user()->email;
+        $this->phone = Auth::guard('professor')->user()->phone;
+        $this->address = Auth::guard('professor')->user()->address;
 
     }
 
@@ -44,10 +44,10 @@ class Settings extends Component
         'address' => ['required', 'string', 'max:255']
     ];
 
-    public function updatedPhoto()
+    public function updatedImage()
     {
             $validatedata = $this->validate(
-                ['photo' => ['image','mimes:jpeg,jpg,png','max:2048']]
+                ['image' => ['image','mimes:jpeg,jpg,png','max:2048']]
             );
     }
 
@@ -55,27 +55,28 @@ class Settings extends Component
         $validatedata = $this->validate(
             array_merge(
                 $this->rules,
-                [ 'email'   => ['required','email',"unique:users,email,".$this->user_id],
+                [ 'email'   => ['required','email',"unique:professors,email,".$this->professor_id],
         ]));
-        if(!$this->photo)
-            User::whereId($this->user_id)->update($validatedata);
-        if($this->photo) {
-            $photoname = $this->photo->getClientOriginalName();
-            User::whereId($this->user_id)->update(array_merge($validatedata,['photo' => $photoname]));
-            $dir = public_path('img/users/'.$this->user_id);
+        if(!$this->image)
+            Professor::whereId($this->professor_id)->update($validatedata);
+        if($this->image) {
+            $imagename = $this->image->getClientOriginalName();
+            Professor::whereId($this->professor_id)->update(array_merge($validatedata,['image' => $imagename]));
+            $path = '/images/professors/'.$this->admin_id;
+            $dir = public_path('assets'.$path);
             if(file_exists($dir))
                 File::deleteDirectories($dir);
             else
                 mkdir($dir);
-            $this->photo->storeAs($dir,$photoname);
-            File::deleteDirectory(public_path('uploads/livewire-tmp'));
+            $this->image->storeAs($path,$imagename);
+            File::deleteDirectory(public_path('assets/livewire-tmp'));
         }
         session()->flash('message', "Your Profile Updated.");
-        return redirect()->route('user.profile');
+        return redirect()->route('professor.profile');
     }
 
     public function render()
     {
-        return view('livewire.user.settings');
+        return view('livewire.professor.settings');
     }
 }

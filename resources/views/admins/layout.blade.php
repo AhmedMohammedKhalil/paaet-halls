@@ -1,8 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.main')
+
 @section('content')
-    <div>{{ $page_name }}</div>
-    <div>
-        @include('admins.menu')
-        @yield('section')
+<section class="blog-post-area blog-post-left-sidebar ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                @include('admins.menu')
+            </div>
+            <div class="col-lg-8">
+                @yield('section')
+            </div>
+        </div>
     </div>
+</section>
 @endsection

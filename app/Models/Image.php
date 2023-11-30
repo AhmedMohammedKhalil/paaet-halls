@@ -10,7 +10,7 @@ class Image extends Model
     use HasFactory;
 
     protected $fillable = [
-        'image'
+        'image','hall_id'
     ];
     public function hall() {
         return $this->belongsTo(Hall::class);

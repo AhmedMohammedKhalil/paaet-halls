@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('buildings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->text('image')->nullable();
+            $table->text('image');
             $table->text('details');
             $table->text('address');
 
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('supervisor_id')
             ->references('id')->on('supervisors')
             ->onDelete('cascade')->onUpdate('cascade');
-            
+
             $table->timestamps();
         });
     }

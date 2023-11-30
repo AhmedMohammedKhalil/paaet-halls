@@ -3,64 +3,90 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hall;
-use App\Http\Requests\StoreHallRequest;
-use App\Http\Requests\UpdateHallRequest;
+use App\Models\Reserve;
+use Illuminate\Http\Request;
 
 class HallController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+
+    public function index() {
+        return view('supervisors.halls.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('supervisors.halls.create');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreHallRequest $request)
-    {
-        //
+
+    public function edit(Request $r) {
+
+        return view('supervisors.halls.edit',['hall_id'=>$r->id]);
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Hall $hall)
-    {
-        //
+
+    public function show(Request $r) {
+        $hall = Hall::whereId($r->id)->first();
+        $search = '';
+        return view('supervisors.halls.show',compact('hall','search'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Hall $hall)
-    {
-        //
+    public function showTable(Request $r) {
+        $events = [];
+        $HallReserves = Reserve::where('hall_id',$r->id)->get();
+        foreach($HallReserves as $reserve) {
+            $events[] = [
+                'title' => $reserve->professor->name,
+                'start' => $reserve->start_at,
+                'end'=> $reserve->end_at,
+                'backgroundColor' => '#62442e',
+                'borderColor' => '#62442e'
+            ];
+        }
+        return view('table',compact('events'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateHallRequest $request, Hall $hall)
-    {
-        //
+
+    public function editImage(Request $r) {
+        return view('supervisors.halls.editImage',['image_id'=>$r->id]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Hall $hall)
-    {
-        //
+    public function delete() {
+
     }
+
+    public function deleteImage() {
+    }
+
+
+    public function showHall(Request $r)
+    {
+        $hall = Hall::whereId($r->id)->first();
+        $search = '';
+        return view('admins.supervisors.showhall',compact('hall','search'));
+    }
+
+    public function professorShowHall(Request $r)
+    {
+        $hall = Hall::whereId($r->id)->first();
+        $search = '';
+        return view('admins.professors.showhall',compact('hall','search'));
+    }
+
+    public function showHallTable(Request $r) {
+        $events = [];
+        $HallReserves = Reserve::where('hall_id',$r->id)->get();
+        foreach($HallReserves as $reserve) {
+            $events[] = [
+                'title' => $reserve->professor->name,
+                'start' => $reserve->start_at,
+                'end'=> $reserve->end_at,
+                'backgroundColor' => '#62442e',
+                'borderColor' => '#62442e'
+            ];
+        }
+        return view('table',compact('events'));
+    }
+
 }

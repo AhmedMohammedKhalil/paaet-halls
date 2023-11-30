@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Livewire\User;
+namespace App\Http\Livewire\Supervisor;
 
-use App\Models\User;
+use App\Models\Supervisor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class Register extends Component
 {
-    public $name, $email, $password, $confirm_password, $phone, $address;
+    public $name, $email, $password, $confirm_password, $phone, $address ,$is_approved;
 
 
     protected $rules = [
         'name' => ['required', 'string', 'max:50'],
         'phone' => ['required', 'string','regex:/^([0-9\s\-\+\(\)]*)$/','min:8','max:8'],
-        'email'   => 'required|email|unique:users,email',
+        'email'   => 'required|email|unique:supervisors,email',
         'password' => ['required', 'string', 'min:8'],
         'confirm_password' => ['required', 'string', 'min:8','same:password'],
         'address' => ['required', 'string', 'max:255'],
@@ -39,20 +39,24 @@ class Register extends Component
 
     public function register(){
         $validatedData = $this->validate();
+        $is_approved="انتظار";
         $data = array_merge(
             $validatedData,
-            ['password' => Hash::make($this->password)]
+            [
+                'password' => Hash::make($this->password),
+                'is_approved'=> $is_approved
+            ]
         );
-        //dd($data);
-        User::create($data);
-        if(Auth::guard('user')->attempt($validatedData)){
-            session()->flash('message', "You are Login successful.");
-            return redirect()->route('home');
-        }
+        Supervisor::create($data);
+        // if(Auth::guard('supervisor')->attempt($validatedData)){
+        //     session()->flash('message', "You are Login successful.");
+        //     return redirect()->route('home');
+        // }
+        return redirect()->route('supervisor.approval');
     }
 
     public function render()
     {
-        return view('livewire.user.register');
+        return view('livewire.supervisor.register');
     }
 }

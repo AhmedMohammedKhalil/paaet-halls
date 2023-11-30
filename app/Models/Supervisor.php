@@ -21,9 +21,13 @@ class Supervisor extends Authenticatable
         return $this->hasMany(Hall::class);
     }
 
+    public function buildings () {
+        return $this->hasMany(Building::class);
+    }
+
     public function professors()
     {
         return $this->belongsToMany(Professor::class,'notifications','supervisor_id','professor_id')
-        ->using(Notification::class)->withPivot('id','type','content','date','author')->withTimestamps();
+        ->using(Notification::class)->withPivot('id','type','content','date','author','hall_id')->withTimestamps();
     }
 }

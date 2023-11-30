@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('number');
             $table->string('capacity');
             $table->text('cover');
-            $table->text('vedio')->nullable();
+            $table->text('video')->nullable();
 
             $table->integer('supervisor_id')->unsigned();
             $table->foreign('supervisor_id')
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreign('building_id')
             ->references('id')->on('buildings')
             ->onDelete('cascade')->onUpdate('cascade');
-            
+
             $table->timestamps();
         });
     }

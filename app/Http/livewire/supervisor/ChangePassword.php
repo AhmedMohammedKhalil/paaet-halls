@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Company;
+namespace App\Http\Livewire\Supervisor;
 
-use App\Models\Company;
+use App\Models\Supervisor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class ChangePassword extends Component
 {
-    public $password='', $confirm_password='',$company_id='';
+    public $password='', $confirm_password='',$supervisor_id='';
 
 
     public function mount() {
-        $this->company_id = Auth::guard('company')->user()->id;
+        $this->supervisor_id = Auth::guard('supervisor')->user()->id;
     }
 
 
@@ -34,13 +34,13 @@ class ChangePassword extends Component
         $validatedata = $this->validate();
         $data =['password' => Hash::make($this->password)];
 
-        Company::whereId($this->company_id)->update($data);
+        Supervisor::whereId($this->supervisor_id)->update($data);
         session()->flash('message', "Your Profile Updated.");
-        return redirect()->route('company.profile');
+        return redirect()->route('supervisor.profile');
     }
 
     public function render()
     {
-        return view('livewire.company.change-password');
+        return view('livewire.supervisor.change-password');
     }
 }

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
-use App\Http\Requests\StoreImageRequest;
-use App\Http\Requests\UpdateImageRequest;
 
 class ImageController extends Controller
 {
@@ -27,7 +25,7 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreImageRequest $request)
+    public function store()
     {
         //
     }
@@ -51,7 +49,7 @@ class ImageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateImageRequest $request, Image $image)
+    public function update()
     {
         //
     }
