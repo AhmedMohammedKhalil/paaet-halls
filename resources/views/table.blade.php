@@ -8,7 +8,7 @@
         direction: rtl
     }
     .fc-view-harness{
-        height: 1160px !important;
+        height: 800px !important;
     }
     .fc-event-main {
         text-align: center
@@ -21,7 +21,7 @@
     </div>
 @endpush
 @section('content')
-<section class="ptb-100" style="height: 1500px">
+<section class="ptb-100" style="height: 1100px">
     <div class="container">
        <div id="calendar"></div>
     </div>
@@ -39,6 +39,7 @@
             direction:'rtl',
             //timeZone: 'Asia/kuwait',
             initialView: 'timeGridWeek',
+            slotMinTime:'08:00:00',
             firstDay: -1,
             allDaySlot: false,
             textColor:'red',
