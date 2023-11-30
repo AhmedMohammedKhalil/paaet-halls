@@ -1,7 +1,7 @@
 <div>
     @if($buildings)
     <div class="section-title">
-        <h2>جميع المبانى</h2>
+        <h2>جميع المباني</h2>
     </div>
     <div class="row justify-content-center">
         @foreach($buildings as $building)

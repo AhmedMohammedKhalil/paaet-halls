@@ -18,14 +18,14 @@
 @endpush
 @push('title')
     <div class="page-title-content">
-        <h2>جميع المبانى</h2>
+        <h2>جميع المباني</h2>
         <ul>
             <li>
                 <a href="{{ route('home') }}">
                     الرئيسية
                 </a>
             </li>
-            <li class="active">جميع المبانى</li>
+            <li class="active">جميع المباني</li>
         </ul>
     </div>
 @endpush

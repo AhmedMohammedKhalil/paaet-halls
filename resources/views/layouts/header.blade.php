@@ -16,7 +16,7 @@
                                 <span>المشرف</span>
                             </a>
                             <a href="{{ route('professor.login') }}">
-                                <span>عضو هيئة التدريس</span>
+                                <span>الهيئة التدريسية</span>
                             </a>
                         @endunless
                         @auth('admin')
@@ -80,7 +80,7 @@
                                 <a href="{{ route('home') }}" class="nav-link">الرئيسية</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('allbuildings') }}" class="nav-link">المبانى</a>
+                                <a href="{{ route('allbuildings') }}" class="nav-link">المباني</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('allhalls') }}" class="nav-link">القاعات</a>

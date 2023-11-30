@@ -40,7 +40,7 @@
                                 <h2>
                                     <span dir="ltr" id="counter">{{ $professor_count }}</span>
                                 </h2>
-                                <h4>اعضاء هيئة التدريس</h4>
+                                <h4> اعضاء الهيئة  التدريسية</h4>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                 <h2>
                                     <span dir="ltr" id="counter">{{ $building_count }}</span>
                                 </h2>
-                                <h4>المبانى</h4>
+                                <h4>المباني</h4>
                             </div>
                         </div>
                     </div>

@@ -1,14 +1,14 @@
 @extends('professors.layout')
 @push('title')
     <div class="page-title-content">
-        <h2>القاعات المحجوزة لعضو هيئة التدريس</h2>
+        <h2>القاعات المحجوزة لعضو الهيئة التدريسية</h2>
         <ul>
             <li>
                 <a href="{{ route('professor.profile') }}">
                     البروفايل
                 </a>
             </li>
-            <li class="active">القاعات المحجوزة لعضو هيئة التدريس</li>
+            <li class="active">القاعات المحجوزة لعضو الهيئة التدريسية</li>
         </ul>
     </div>
 @endpush
@@ -18,7 +18,7 @@
 
     <div class="col-lg-12 col-md-6">
         <div class="m-auto width-fit-content text-center">
-            <h3>القاعات المحجوزة لعضو هيئة التدريس</h3>
+            <h3>القاعات المحجوزة لعضو الهيئة التدريسية</h3>
         </div>
         <a href="{{ route('professor.showTable') }}" class="default-btn d-block m-auto mt-5" style="width: fit-content">
                 عرض الجدول الخاص بالقاعات المحجوزة

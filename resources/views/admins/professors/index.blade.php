@@ -1,14 +1,14 @@
 @extends('admins.layout')
 @push('title')
     <div class="page-title-content">
-        <h2>اعضاء هيئة التدريس</h2>
+        <h2>اعضاء الهيئة التدريسية</h2>
         <ul>
             <li>
                 <a href="{{ route('admin.dashboard') }}">
                     لوحة التحكم
                 </a>
             </li>
-            <li class="active">اعضاء هيئة التدريس</li>
+            <li class="active">اعضاء الهيئة التدريسية</li>
         </ul>
     </div>
 @endpush
