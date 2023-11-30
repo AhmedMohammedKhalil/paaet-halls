@@ -228,7 +228,7 @@
                                 <div class="gallery-item-content">
                                     <div class="gallery-link" style="display: flex">
                                         <a class="image" href="{{ asset("assets/images/halls/$hall->id/images/$image->id/$image->image") }}">
-                                                <i class="ri-add-fill"></i>
+                                                <i class="ri-eye-fill"></i>
                                         </a>
                                         @if(isset($path) && $path == 'supervisor')
                                             <a title="تعديل"  href="{{ route('supervisor.hall.editimage',['id'=>$image->id]) }}" class="edit" style="color:green;font-size:20px">

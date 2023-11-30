@@ -1,4 +1,28 @@
 @extends('supervisors.layout')
+@push('css')
+    <style>
+        .find-courses-from-bg.find-courses-from-bg-three::before {
+            background-color: #f3f3f5;
+        }
+        .find-courses-from-bg.find-courses-from-bg-three{
+            background-image: unset;
+            color:    color: var(--main-color) !important;
+        }
+        .find-courses-from-bg.find-courses-from-bg-three .form-control{
+            color:    color: var(--main-color) !important;
+
+        }
+        .find-courses-from-bg.find-courses-from-bg-three .form-group i {
+            color:    color: var(--main-color) !important;
+        }
+        ::placeholder {
+            color: rgb(92, 92, 92) !important
+        }
+        /* option[selected] {
+            background: antiquewhite;
+        } */
+    </style>
+@endpush
 @push('title')
     <div class="page-title-content">
         <h2>تعديل الصورة</h2>
