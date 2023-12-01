@@ -17,11 +17,15 @@ class Hall extends Model
     public function professors()
     {
         return $this->belongsToMany(Professor::class,'reserves','hall_id','professor_id')
-        ->using(Reserve::class)->withPivot('id','status','start_at','end_at','date')->withTimestamps();
+        ->using(Reserve::class)->withPivot('id','start_at','end_at')->withTimestamps();
     }
 
     public function supervisor () {
         return $this->belongsTo(Supervisor::class);
+    }
+
+    public function reserves(){
+        return $this->hasMany(Reserve::class);
     }
 
     public function images(){

@@ -44,14 +44,49 @@ class ProfessorController extends Controller
     }
 
     public function allbooking() {
+
         return view('professors.halls.allbookings');
+    }
+
+    public function changeHall(Request $r){
+        $initialhall = Hall::find($r->hall_id);
+        $booking = Reserve::find($r->booking_id);
+        $start_at = $booking->start_at;
+        $end_at = $booking->end_at;
+        $services = $initialhall->services->pluck('id');
+
+
+        $searchedhalls = Hall::where('capacity',$initialhall->capacity)
+                                        ->where('gender',$initialhall->gender)
+                                        ->where('id','!=',$initialhall->id);
+
+        $availableHalls = $searchedhalls->whereDoesntHave('reserves', function ($query) use ($start_at, $end_at) {
+            $query->where(function ($subQuery) use ($start_at, $end_at) {
+                $subQuery->where('start_at', '<', $end_at)
+                            ->where('end_at', '>', $start_at);
+            });
+        })->get();
+
+        $halls = $availableHalls->filter(function ($hall) use ($services) {
+            return $hall->services->pluck('id')->intersect($services)->count() === count($services);
+        });
+        $booking_id = $r->booking_id;
+
+        return view('showrecommendedhalls',compact('halls','booking_id','start_at','end_at'));
+
+    }
+
+    public function addReport(){
+
     }
 
     public function professorShowHall(Request $r)
     {
         $hall = Hall::whereId($r->id)->first();
         $search = '';
-        return view('professors.halls.showhall',compact('hall','search'));
+        $booking_id = $r->booking_id;
+
+        return view('professors.halls.showhall',compact('hall','search','booking_id'));
     }
 
     public function showMyTable() {
@@ -67,6 +102,23 @@ class ProfessorController extends Controller
             ];
         }
         return view('table',compact('events'));
+    }
+
+    public function reserveHall(Request $r) {
+        $start_at = $r->start_at;
+        $end_at = $r->end_at;
+
+        Professor::find(auth('professor')->user()->id)->halls()->attach($r->id,['start_at'=>$start_at,'end_at'=>$end_at]);
+        return redirect()->route('professor.allbooking');
+    }
+
+
+    public function changeReserveHall(Request $r){
+        $start_at = $r->start_at;
+        $end_at = $r->end_at;
+        Professor::find(auth('professor')->user()->id)->halls()->attach($r->id,['start_at'=>$start_at,'end_at'=>$end_at]);
+        Reserve::whereId($r->booking_id)->delete();
+        return redirect()->route('professor.allbooking');
     }
 
 

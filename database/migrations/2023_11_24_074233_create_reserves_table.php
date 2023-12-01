@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('reserves', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('status');
             $table->string('start_at');
             $table->string('end_at');
-            $table->string('date');
             $table->integer('professor_id')->unsigned();
             $table->foreign('professor_id')
             ->references('id')->on('professors')

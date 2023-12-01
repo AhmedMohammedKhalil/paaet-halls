@@ -11,7 +11,7 @@ class Reserve extends Pivot
     protected $table = 'reserves';
     use HasFactory;
 
-    protected $fillable = ['status','start_at','end_at','date','hall_id','professor_id'];
+    protected $fillable = ['start_at','end_at','hall_id','professor_id'];
     public function hall() {
         return $this->belongsTo(Hall::class);
     }

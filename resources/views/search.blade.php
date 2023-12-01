@@ -32,7 +32,7 @@
     <!-- Start Find A Courses Area -->
     <section class="find-courses-area pt-100">
         <div class="container">
-            @livewire('search',['halls'=>$halls,'services'=>$services,'capacities'=>$capacities])
+            @livewire('search',['capacities'=>$capacities,'booking_id' => $booking_id])
         </div>
     </section>
     <!-- End Find A Courses Area -->

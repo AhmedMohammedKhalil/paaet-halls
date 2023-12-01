@@ -11,5 +11,5 @@
     </div>
 @endpush
 @section('content')
-    @include('commons.hallDetails',['search'=> $search])
+    @include('commons.hallDetails',['search'=> $search,'booking_id'=>$booking_id])
 @endsection

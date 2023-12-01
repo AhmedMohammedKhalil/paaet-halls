@@ -62,12 +62,11 @@ class HomeController extends Controller
         $search = '';
         $url = url()->previous();
         $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
-
         return view('showhall',compact('hall','search','route','url'));
     }
 
 
-    public function search()
+    public function search(Request $r)
     {
         $halls = Hall::all();
         $services = Service::all();
@@ -80,8 +79,11 @@ class HomeController extends Controller
             '250 - 300',
             'اكبر من 300'
         ];
-        return view('search',compact('halls','services','capacities'));
+        $booking_id = isset($r->booking_id) ? $r->booking_id : null;
+        return view('search',compact('halls','services','capacities','booking_id'));
     }
+
+
 
     public function searchShowhall(Request $r)
     {
@@ -89,7 +91,10 @@ class HomeController extends Controller
         $search = 'search';
         $url = url()->previous();
         $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
-        return view('showhall',compact('hall','search','route','url'));
+        $start_at = $r->start_at;
+        $end_at = $r->end_at;
+        $booking_id = $r->booking_id;
+        return view('showhall',compact('hall','search','route','url','start_at','end_at','booking_id'));
     }
 
 

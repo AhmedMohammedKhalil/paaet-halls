@@ -27,7 +27,7 @@
                         @endif
                     </p>
 
-                    <a href="{{ route('search-showhall',['id'=>$hall->id]) }}" class="read-more">
+                    <a href="{{ route('search-showhall',['id'=>$hall->id,'start_at'=>$start_at,'end_at'=>$end_at,'booking_id'=>$booking_id]) }}" class="read-more">
                             المزيد
                             <span class="ri-arrow-left-line"></span>
                         </a>
@@ -37,4 +37,5 @@
         @endforeach
     </div>
     @endif
+
 </div>

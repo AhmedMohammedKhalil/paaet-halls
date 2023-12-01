@@ -30,42 +30,43 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-
                                     <th scope="col">الصورة</th>
                                     <th scope="col">رقم القاعة</th>
-                                    <th scope="col">السعة</th>
-                                    <th scope="col">النوع</th>
+                                    <th scope="col">بداية الحجز</th>
+                                    <th scope="col">نهاية الحجز</th>
                                     <th scope="col">الإعدادات</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @foreach(auth('professor')->user()->halls as $h)
-                                <tr>
+                                @if( date('Y-m-d H:i:s',strtotime($h->pivot->start_at )) > date('Y-m-d H:i:s',strtotime("now")))
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="javascript:void(0)">
 
-                                    <td class="product-thumbnail">
-                                        <a href="javascript:void(0)">
+                                                <img src="{{ asset('assets/images/halls/'.$h->id.'/cover/'.$h->cover) }}" alt="Image">
 
-                                            <img src="{{ asset('assets/images/halls/'.$h->id.'/cover/'.$h->cover) }}" alt="Image">
+                                            </a>
+                                        </td>
+                                        <td class="product-name">
+                                            قاعة رقم {{ $h->number }}
+                                        </td>
+                                        <td class="product-name" dir="ltr">
+                                            {{ date('Y-m-d H:i:s',strtotime($h->pivot->start_at ))}}
+                                        </td>
+                                        <td class="product-name" dir="ltr">
+                                            {{ date('Y-m-d H:i:s',strtotime($h->pivot->end_at ))  }}
 
-                                        </a>
-                                    </td>
-                                    <td class="product-name">
-                                        قاعة رقم {{ $h->number }}
-                                    </td>
-                                    <td class="product-name">
-                                        {{ $h->capacity }}
-                                    </td>
-                                    <td class="product-name">
-                                        {{ $h->gender }}
+                                        </td>
+                                        <td class="trash" style="">
+                                            <a title="عرض"  href="{{ route('professor.showHall',['id'=>$h->id,'booking_id'=>$h->pivot->id]) }}" class="show" style="color:blue;font-size:20px">
+                                                <i class="ri-eye-line"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endif
 
-                                    </td>
-                                    <td class="trash" style="">
-                                        <a title="عرض"  href="{{ route('professor.showHall',['id'=>$h->id]) }}" class="show" style="color:blue;font-size:20px">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </td>
-                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

@@ -85,10 +85,25 @@
                                     عرض الجدول
                             </a>
                         @endif
+                        @if($search == '' && isset($booking_id))
+                            <a href="{{ route('professor.changehall',['hall_id'=>$hall->id,'booking_id' => $booking_id]) }}" class="default-btn mr-20">
+                                تغيير حجز القاعة
+                            </a>
+
+                            <a href="{{ route('professor.addreport',['hall_id'=>$hall->id,'booking_id' => $booking_id]) }}" class="default-btn mr-20">
+                                إبلاغ عن عطل
+                            </a>
+                        @endif
                         @if($search == 'search' && auth('professor')->check() )
-                        <a href="#" class="default-btn">
-                                حجز
-                        </a>
+                            @if($booking_id == null)
+                                <a href="{{ route('professor.reservehall',['id'=>$hall->id,'start_at'=>$start_at,'end_at'=>$end_at]) }}" class="default-btn">
+                                        حجز
+                                </a>
+                            @else
+                                <a href="{{ route('professor.changereservehall',['id'=>$hall->id,'start_at'=>$start_at,'end_at'=>$end_at,'booking_id'=>$booking_id]) }}" class="default-btn">
+                                        تغيير القاعة
+                                </a>
+                            @endif
                         @endif
                 </div>
             </div>
