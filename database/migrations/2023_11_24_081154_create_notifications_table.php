@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
+            $table->integer('type')->nullable();
             $table->text('content');
-            $table->string('date');
-            $table->string('author');
-
+            $table->integer('book_id');
+            $table->integer('mark_as_read')->default(0);
+            $table->string('author')->nullable();
             $table->integer('professor_id')->unsigned();
             $table->foreign('professor_id')
             ->references('id')->on('professors')
             ->onDelete('cascade')->onUpdate('cascade');
-            
+
             $table->integer('hall_id')->unsigned();
             $table->foreign('hall_id')
             ->references('id')->on('halls')
