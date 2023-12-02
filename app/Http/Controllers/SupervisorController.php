@@ -73,4 +73,12 @@ class SupervisorController extends Controller
         return view('supervisors.waiting');
     }
 
+    public function allNotifications() {
+        return view('supervisors.notifications.index');
+    }
+
+    public function addreply(Request $r) {
+        return view('supervisors.notifications.addreply',['id'=>$r->id]);
+    }
+
 }

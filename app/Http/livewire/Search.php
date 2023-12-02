@@ -4,8 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\Hall;
 use App\Models\Service;
+use App\Rules\NoFridayAndSaturday;
 use Livewire\Component;
-use Illuminate\Validation\Validator;
 
 class Search extends Component
 {
@@ -24,6 +24,9 @@ class Search extends Component
 
     protected $messages = [
         'required' => 'ممنوع ترك الحقل فارغاَ',
+        'after_or_equal' => 'يجب ان يكون الوقت بعد الثامنة صباحا وفى نفس اليوم',
+        'befor_or_equal' => 'يجب ان يكون الوقت قبل العاشرة مساءا وفى نفس اليوم',
+        'after' => 'يجب ان يكون وقت نهاية الحجز اكبر من بداية الحجز'
     ];
 
     protected $rules = [
@@ -32,6 +35,7 @@ class Search extends Component
         'services' => ['required'],
         'start_at' => ['required'],
         'end_at' => ['required'],
+
     ];
 
     public function search() {
@@ -48,13 +52,14 @@ class Search extends Component
                 'start_at' => [
                     'required',
                     'after_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 08:00:00")),
-                    'before_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 23:59:59")),
+                    'before_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 10:00:00")),
+                    new NoFridayAndSaturday
                 ],
                 'end_at' => [
                     'required',
                     'after_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 08:00:00")),
-                    'before_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 23:59:59")),
-                    'after:start_at',
+                    'before_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 10:00:00")),
+                    'after:start_at', new NoFridayAndSaturday
                 ],
             ])
         );

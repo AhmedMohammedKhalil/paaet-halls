@@ -25,9 +25,20 @@ class Supervisor extends Authenticatable
         return $this->hasMany(Building::class);
     }
 
+    public function notifications() {
+        return $this->hasMany(Notification::class,'supervisor_id');
+    }
+
+    public function unreadNotifications() {
+        return $this->notifications()->where('mark_as_read',0)->where('author','supervisor');
+    }
+    public function latestNotifications() {
+        return $this->notifications()->where('author','supervisor')->latest();
+    }
+
     public function professors()
     {
         return $this->belongsToMany(Professor::class,'notifications','supervisor_id','professor_id')
-        ->using(Notification::class)->withPivot('id','type','content','date','author','hall_id')->withTimestamps();
+        ->using(Notification::class)->withPivot('id','mark_as_read','type','author','content','book_id','hall_id')->withTimestamps();
     }
 }

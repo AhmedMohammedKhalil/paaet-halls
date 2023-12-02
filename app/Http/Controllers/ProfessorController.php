@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Hall;
-
+use App\Models\Notification;
 use App\Models\Reserve;
 use App\Models\Professor;
 use Illuminate\Http\Request;
@@ -76,8 +76,18 @@ class ProfessorController extends Controller
 
     }
 
-    public function addReport(){
+    public function addReport(Request $r){
+        $hall = Hall::find($r->hall_id);
+        $booking = Reserve::find($r->booking_id);
+        return view('professors.add-report',compact('hall','booking'));
+    }
 
+    public function allreports(){
+        $professor = Professor::find(auth('professor')->user()->id);
+        $reports = Notification::where('professor_id',$professor->id)->get();
+        //$hall = Hall::find($professor-);
+        //$booking = Reserve::find($r->booking_id);
+        return view('professors.all-reports',compact('reports'));
     }
 
     public function professorShowHall(Request $r)
@@ -117,18 +127,25 @@ class ProfessorController extends Controller
         $start_at = $r->start_at;
         $end_at = $r->end_at;
         Professor::find(auth('professor')->user()->id)->halls()->attach($r->id,['start_at'=>$start_at,'end_at'=>$end_at]);
+        Notification::where('book_id',$r->booking_id)->delete();
         Reserve::whereId($r->booking_id)->delete();
         return redirect()->route('professor.allbooking');
     }
 
 
     public function allNotifications() {
+        return view('professors.notifications.index');
 
     }
 
 
-    public function showNotification() {
+    public function showNotification(Request $r) {
 
+        $notification = Notification::find($r->id);
+        $booking = Reserve::find($notification->book_id);
+        $notification->mark_as_read = 1;
+        $notification->save();
+        return view('professors.notifications.show',compact('notification','booking'));
     }
 
 

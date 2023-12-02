@@ -11,7 +11,7 @@ class Notification extends Pivot
     use HasFactory;
 
     protected $table = 'notifications';
-    protected $fillable = ['type','content','author','date','hall_id','supervisor_id','professor_id'];
+    protected $fillable = ['mark_as_read','content','type','author','book_id','hall_id','supervisor_id','professor_id'];
 
 
     public function hall() {
@@ -24,5 +24,9 @@ class Notification extends Pivot
 
     public function supervisor() {
         return $this->belongsTo(Supervisor::class);
+    }
+
+    public function reserve() {
+        return $this->belongsTo(Reserve::class,'book_id');
     }
 }

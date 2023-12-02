@@ -112,6 +112,8 @@
     <script src="{{ asset('assets/js/ajaxchimp.min.js') }}"></script>
     <!-- Custom JS -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}" ></script>
+
     @livewireScripts
     @stack('js')
 </body>

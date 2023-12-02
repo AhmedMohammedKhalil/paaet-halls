@@ -40,7 +40,8 @@
             //timeZone: 'Asia/kuwait',
             initialView: 'timeGridWeek',
             slotMinTime:'08:00:00',
-            firstDay: -1,
+            firstDay: 0,
+            hiddenDays: [ 5, 6 ],
             allDaySlot: false,
             textColor:'red',
             buttonText:{

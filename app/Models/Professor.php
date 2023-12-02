@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Notification;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 
 class Professor extends Authenticatable
 {
@@ -23,8 +24,20 @@ class Professor extends Authenticatable
 
     public function supervisors()
     {
-        return $this->belongsToMany(Supervisor::class,'notification','professor_id','supervisor_id')
-        ->using(Notification::class)->withPivot('id','type','content','author','date','hall_id')->withTimestamps();
+        return $this->belongsToMany(Supervisor::class,'notifications','professor_id','supervisor_id')
+        ->using(Notification::class)->withPivot('id','mark_as_read','type','author','content','book_id','hall_id')->withTimestamps();
+    }
+
+    public function notifications() {
+        return $this->hasMany(Notification::class,'professor_id');
+    }
+
+    public function unreadNotifications() {
+        return $this->notifications()->where('mark_as_read',0)->where('author','professor');
+    }
+
+    public function latestNotifications() {
+        return $this->notifications()->where('author','professor')->latest();
     }
 
 

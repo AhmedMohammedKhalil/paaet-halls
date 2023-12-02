@@ -78,7 +78,7 @@ Route::middleware(['auth:supervisor'])->name('supervisor.')->prefix('supervisor'
     Route::get('/changePassword', 'SupervisorController@changePassword')->name('changePassword');
     Route::get('/logout', 'SupervisorController@logout')->name('logout');
     Route::get('/allnotifications', 'SupervisorController@allNotifications')->name('allnotifications');
-    Route::get('/shownotification', 'SupervisorController@showNotifications')->name('shownotification');
+    Route::get('/addreply', 'SupervisorController@addreply')->name('addreply');
 
 
     Route::prefix('/building')->name('building.')->group(function () {
@@ -112,6 +112,7 @@ Route::middleware(['auth:professor'])->name('professor.')->prefix('professor')->
     Route::get('/changePassword', 'ProfessorController@changePassword')->name('changePassword');
     Route::get('/logout', 'ProfessorController@logout')->name('logout');
     Route::get('/allbooking', 'ProfessorController@allbooking')->name('allbooking');
+    Route::get('/allreports', 'ProfessorController@allreports')->name('allreports');
     Route::get('/reservehall', 'ProfessorController@reserveHall')->name('reservehall');
     Route::get('/changereservehall', 'ProfessorController@changeReserveHall')->name('changereservehall');
     Route::get('/changehall', 'ProfessorController@changeHall')->name('changehall');
@@ -119,7 +120,7 @@ Route::middleware(['auth:professor'])->name('professor.')->prefix('professor')->
     Route::get('/showhall', 'ProfessorController@professorShowHall')->name('showHall');
     Route::get('/showtable', 'ProfessorController@showMyTable')->name('showTable');
     Route::get('/allnotifications', 'ProfessorController@allNotifications')->name('allnotifications');
-    Route::get('/shownotification', 'ProfessorController@showNotifications')->name('shownotification');
+    Route::get('/shownotification', 'ProfessorController@showNotification')->name('shownotification');
 
 
 
