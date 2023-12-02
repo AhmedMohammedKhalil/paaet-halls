@@ -247,7 +247,7 @@
         <tr>
             <td>Paaet Halls Team</td>
             <td>دكتور عبدالعزيز بركات</td>
-            <td>65912258</td>
+            <td>96512258</td>
             <td>Paaethalls@mail.com</td>
 
             <!-- Add more data for each team member if needed -->
