@@ -1,7 +1,7 @@
 
 
 <form class="user-form" wire:submit.prevent='register'>
-    <h3>إنشاء حساب عضو هيئة التدريس</h3>
+    <h3>إنشاء حساب عضو الهيئة التدريسية</h3>
     @if (session()->has('error'))
     <div class="alert alert-danger">
         {{ session('error') }}

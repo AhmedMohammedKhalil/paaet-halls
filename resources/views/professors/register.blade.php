@@ -2,14 +2,14 @@
 @extends('layouts.main')
 @push('title')
     <div class="page-title-content">
-        <h2>إنشاء حساب عضو هيئة التدريس</h2>
+        <h2>إنشاء حساب عضو الهيئة التدريسية</h2>
         <ul>
             <li>
                 <a href="{{ route('home') }}">
                     الرئيسية
                 </a>
             </li>
-            <li class="active">إنشاء حساب عضو هيئة التدريس</li>
+            <li class="active">إنشاء حساب عضو الهيئة التدريسية</li>
         </ul>
     </div>
 @endpush

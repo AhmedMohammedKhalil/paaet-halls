@@ -16,6 +16,21 @@
         .single-study:hover{
             box-shadow: gray 1px 1px 5px;
         }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 40px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 @endpush
 @section('landing')
@@ -220,7 +235,27 @@
             <h2>تواصل معنا</h2>
         </div>
 
-        <form id="contactForm">
+        
+    <table>
+        <tr>
+            <th>فريق العمل</th>
+            <th>تحت اشراف الدكتور</th>
+            <th>رقم التواصل</th>
+            <th>البريد الالكتروني</th>
+            <!-- Add more columns if needed -->
+        </tr>
+        <tr>
+            <td>Paaet Halls Team</td>
+            <td>دكتور عبدالعزيز بركات</td>
+            <td>65912258</td>
+            <td>Paaethalls@mail.com</td>
+
+            <!-- Add more data for each team member if needed -->
+        </tr>
+        <!-- Add more rows for additional teams or contacts -->
+    </table>
+
+        {{-- <form id="contactForm">
             <div class="row">
                 <div class="col-lg-6 col-sm-6">
                     <div class="form-group">
@@ -255,7 +290,7 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-        </form>
+        </form> --}}
     </div>
 </section>
 <!-- End Contact Area -->

@@ -52,13 +52,13 @@ class Search extends Component
                 'start_at' => [
                     'required',
                     'after_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 08:00:00")),
-                    'before_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 10:00:00")),
+                    'before_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 22:00:00")),
                     new NoFridayAndSaturday
                 ],
                 'end_at' => [
                     'required',
                     'after_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 08:00:00")),
-                    'before_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 10:00:00")),
+                    'before_or_equal:' . date('Y-m-d H:i:s', strtotime($startDate." 22:00:00")),
                     'after:start_at', new NoFridayAndSaturday
                 ],
             ])

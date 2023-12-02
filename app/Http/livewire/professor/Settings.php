@@ -62,7 +62,7 @@ class Settings extends Component
         if($this->image) {
             $imagename = $this->image->getClientOriginalName();
             Professor::whereId($this->professor_id)->update(array_merge($validatedata,['image' => $imagename]));
-            $path = '/images/professors/'.$this->admin_id;
+            $path = '/images/professors/'.$this->professor_id;
             $dir = public_path('assets'.$path);
             if(file_exists($dir))
                 File::deleteDirectories($dir);

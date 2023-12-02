@@ -1,6 +1,6 @@
 
 <form class="user-form" wire:submit.prevent='login'>
-    <h3>تسجيل دخول عضو هيئة التدريس</h3>
+    <h3>تسجيل دخول عضو الهيئة التدريسية</h3>
     @if (session()->has('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
