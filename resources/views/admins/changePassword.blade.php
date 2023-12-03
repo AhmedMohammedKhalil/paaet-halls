@@ -8,7 +8,7 @@
                     البروفايل
                 </a>
             </li>
-            <li class="active">تعديل كلمة السر</li>
+            <li class="active">تعديل كلمة المرور</li>
         </ul>
     </div>
 @endpush

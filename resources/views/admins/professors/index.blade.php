@@ -31,7 +31,7 @@
 
                                 <th scope="col">الصورة</th>
                                 <th scope="col">الإسم</th>
-                                <th scope="col">الإيميل</th>
+                                <th scope="col">البريد الألكتروني</th>
                                 <th scope="col">الموبايل</th>
                                 <th scope="col">الإعدادات</th>
                             </tr>

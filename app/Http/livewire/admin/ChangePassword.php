@@ -26,7 +26,7 @@ class ChangePassword extends Component
     protected $messages = [
         'required' => 'ممنوع ترك الحقل فارغاَ',
         'min' => 'لابد ان يكون الحقل مكون على الاقل من 8 خانات',
-        'same' => 'لابد ان يكون الباسورد متطابق',
+        'same' => 'لابد ان تكون كلمة المرور متطابقة',
     ];
 
 

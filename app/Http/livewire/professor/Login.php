@@ -19,8 +19,8 @@ class Login extends Component
     protected $messages = [
         'required' => 'ممنوع ترك الحقل فارغاَ',
         'min' => 'لابد ان يكون الحقل مكون على الاقل من 8 خانات',
-        'email' => 'هذا الإيميل غير صحيح',
-        'exists' => 'هذا الايميل غير مسجل فى الموقع',
+        'email' => 'هذا البريد الألكتروني غير صحيح',
+        'exists' => 'هذا البريد الألكتروني غير مسجل فى الموقع',
     ];
 
     public function login(){
@@ -30,7 +30,7 @@ class Login extends Component
             session()->flash('message', "تم دخولك ينجاح");
             return redirect()->route('home');
         }else{
-            session()->flash('error', 'هناك خطا فى الايميل او الباسورد');
+            session()->flash('error', 'هناك خطا فى البريد الألكتروني او كلمة المرور');
         }
     }
 
