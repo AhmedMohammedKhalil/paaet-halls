@@ -16,7 +16,7 @@
         .single-study:hover{
             box-shadow: gray 1px 1px 5px;
         }
-        
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -34,7 +34,7 @@
 
         .cont{
             margin-top: 100px;
-            
+
         }
     </style>
 @endpush
@@ -240,7 +240,7 @@
             <h2>تواصل معنا</h2>
         </div>
 
-        
+
     <table>
         <tr>
             <th>فريق العمل</th>
@@ -250,10 +250,13 @@
             <!-- Add more columns if needed -->
         </tr>
         <tr>
-            <td>Paaet Halls Team</td>
-            <td>دكتور عبدالعزيز بركات</td>
+            <td>Group 3</td>
+            <td>دكتور عبدالعزيز بركات
+                <br>
+                دكتور على الفيلي
+            </td>
             <td>96512258</td>
-            <td>Paaethalls@mail.com</td>
+            <td>Paaethalls@paaet.edu.kw</td>
 
             <!-- Add more data for each team member if needed -->
         </tr>
@@ -261,7 +264,7 @@
     </table>
 
         <div class="container cont" >
-            @livewire('add-contact')   
+            @livewire('add-contact')
         </div>
     </div>
 </section>
