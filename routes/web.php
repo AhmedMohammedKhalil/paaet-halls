@@ -69,6 +69,10 @@ Route::middleware(['auth:admin'])->name('admin.')->prefix('admin')->group(functi
         Route::get('/showhall', 'HallController@professorShowHall')->name('showHall');
 
     });
+   // admin.contact.index
+    Route::prefix('/contact')->name('contact.')->group(function () {
+    Route::get('/index', 'ContactController@index')->name('index');
+});
 });
 
 Route::middleware(['auth:supervisor'])->name('supervisor.')->prefix('supervisor')->group(function () {

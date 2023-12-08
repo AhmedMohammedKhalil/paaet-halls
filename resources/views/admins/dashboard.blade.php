@@ -82,6 +82,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="single-counter bg-style">
+                            <i class="flaticon-graduation-cap"></i>
+
+                            <div class="count-title">
+                                <h2>
+                                    <span dir="ltr" id="counter">{{ $contact_count }}</span>
+                                </h2>
+                                <h4>الرسائل</h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="shape counter-shape-1">

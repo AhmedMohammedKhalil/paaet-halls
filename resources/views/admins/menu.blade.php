@@ -45,6 +45,13 @@
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
             </li>
+
+             <li>
+                <a href="{{ route('admin.contact.index') }}">
+                         الرسائل
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
             <li>
                 <a href="{{ route('admin.logout') }}">
                         خروج

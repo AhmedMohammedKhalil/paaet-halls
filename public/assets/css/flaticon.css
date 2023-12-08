@@ -89,3 +89,9 @@ i[class*=" flaticon-"]:before {
 .flaticon-teacher:before {
     content: "\f113";
 }
+.flaticon-message:before {
+    content: url('../images/icons/email.png');
+    display: inline-block !important;
+    width: 20px !important;
+    height: 20px !important; 
+}
