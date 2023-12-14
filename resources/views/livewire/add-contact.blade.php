@@ -35,13 +35,13 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12">
-                        <button type="submit" class= "btn default-btn default-btn" style="width:fit-content;display:block;margin: auto; width:200px;margin-top:20px;}">
+                        <button type="submit" class= "btn default-btn default-btn" style="width:fit-content;display:block;margin: auto; width:200px;margin-top:20px;">
                                 <span>ارسال</span>
                             </button>
                         <div id="msgSubmit" class="h3 text-center hidden"></div>
                         <div class="clearfix"></div>
                     </div>
                 </div>
-            </form> 
+            </form>
 
 

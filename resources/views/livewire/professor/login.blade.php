@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="col-12">
-            <h3> سجل دخول او <a href="{{ route('professor.login') }}" class="text-decoration-underline"> انشئ حساب الان </a>
+            <h3> سجل دخول او <a href="{{ route('professor.register') }}" class="text-decoration-underline"> انشئ حساب الان </a>
             </h3>
         </div>
         <div class="col-12">
