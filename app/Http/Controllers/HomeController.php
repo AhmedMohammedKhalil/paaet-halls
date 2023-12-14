@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
+use App\Models\AboutService;
 use App\Models\Building;
 use App\Models\Hall;
 use App\Models\Reserve;
 use App\Models\Service;
+use App\Models\Slider;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -22,14 +25,18 @@ class HomeController extends Controller
     {
         $buildings = Building::limit(10)->get();
         $halls = Hall::limit(10)->get();
-        $video = 'video.mp4';
-        return view('home',compact('buildings','halls','video'));
+        $slider = Slider::Limit(1)->first();
+        $about = About::Limit(1)->first();
+        $video = $slider->video;
+        return view('home',compact('buildings','halls','slider','about','video'));
     }
 
 
     public function aboutus()
     {
-        return view('aboutus');
+        $about = About::Limit(1)->first();
+        $aboutservices = AboutService::all();
+        return view('aboutus',compact('about','aboutservices'));
     }
 
 

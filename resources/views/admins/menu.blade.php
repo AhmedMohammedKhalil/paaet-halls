@@ -45,10 +45,27 @@
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
             </li>
-
-             <li>
+            <li>
+                <a href="{{ route('admin.slider.index') }}">
+                         سلايدر
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.about.index') }}">
+                        من نحن
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.about-service.index') }}">
+                        أهدافنا
+                        <i class="ri-arrow-left-s-line"></i>
+                    </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.contact.index') }}">
-                         الرسائل
+                        الرسائل
                         <i class="ri-arrow-left-s-line"></i>
                     </a>
             </li>

@@ -36,6 +36,10 @@
             margin-top: 100px;
 
         }
+
+        .banner-area #jarallax-container-0 div{
+            background-image: url("{{ asset('assets/images/sliders/image/'.$slider->image) }}") !important;
+        }
     </style>
 @endpush
 @section('landing')
@@ -46,15 +50,15 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="banner-content">
-                            <span>مرحبا بك فى موقعنا</span>
-                            <h1>احجز قاعتك الان مع اختيار افضل الخدمات </h1>
+                            <span>{!! nl2br($slider->title) !!}</span>
+                            <h1>{!! nl2br($slider->content) !!}</h1>
                         </div>
                     </div>
 
                     <div class="col-lg-6">
 
                         <div class="video-button">
-                            <a href="{{ asset('assets/videos/'.$video) }}" class="video-btn">
+                            <a href="{{ asset('assets/images/sliders/video/'.$slider->video) }}" class="video-btn">
                                     <i class="flaticon-play-button"></i>
                                 </a>
                         </div>
@@ -71,7 +75,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="about-img-two mr-15">
-                    <img src="{{ asset('assets/images/about-img-3.jpg') }}" alt="Image">
+                    <img src="{{ asset('assets/images/abouts/'.$about->image) }}" alt="Image">
 
                     <div class="about-shape">
                         <img src="{{ asset('assets/images/about-shape.png') }}" alt="Image">
@@ -81,9 +85,8 @@
 
             <div class="col-lg-6">
                 <div class="about-content ml-15">
-                    <span>موقعنا</span>
                     <h2>من نحن</h2>
-                    <p>نحن مجموعه من الطلاب الخريجين قمنا بعمل موقع الكترونى لمشروع تخرجنا ليخدم الهيئة التدريسية  وتسهيل لهم حجز القاعات وتنظيم لهم عملية الحجز ومعرفة كافة التفاصيل عن القاعات قبل حجزها وايضا طريقة للتواصل مع المشرفين والقائمين والمسئولين عن القاعات<p>
+                    <p>{!! nl2br($about->content) !!}</p>
                     <a href="{{ route('aboutus') }}" class="default-btn">
                             المزيد
                             <i class="ri-arrow-left-line"></i>
@@ -284,7 +287,7 @@
                 iframe: {
                     markup: '<div class="mfp-iframe-scaler">'+
                         '<div class="mfp-close"></div>'+
-                        '<iframe class="mfp-iframe" frameborder="0" allowfullscreen srcdoc="<html style=\'overflow:hidden\'><video autoplay style=\'width:100%;height:auto;overflow:hidden\' controls><source src=\'{{ asset("assets/videos/$video")  }}\' type=\'video/mp4\' />Your browser does not support this video format.</video></html>">'+
+                        '<iframe class="mfp-iframe" frameborder="0" allowfullscreen srcdoc="<html style=\'overflow:hidden\'><video autoplay style=\'width:100%;height:auto;overflow:hidden\' controls><source src=\'{{ asset("assets/images/sliders/video/$slider->video")  }}\' type=\'video/mp4\' />Your browser does not support this video format.</video></html>">'+
                         '</iframe>'+
                     '</div>',
 

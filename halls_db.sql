@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 03:12 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Dec 14, 2023 at 09:05 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,50 @@ SET time_zone = "+00:00";
 --
 -- Database: `halls_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `abouts`
+--
+
+CREATE TABLE `abouts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `content` text NOT NULL,
+  `image` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `abouts`
+--
+
+INSERT INTO `abouts` (`id`, `content`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'نحن مجموعه من الطلاب الخريجين قمنا بعمل موقع الكترونى لمشروع تخرجنا ليخدم الهيئة التدريسية وتسهيل لهم حجز القاعات وتنظيم لهم عملية الحجز ومعرفة كافة التفاصيل عن القاعات قبل حجزها وايضا طريقة للتواصل مع المشرفين والقائمين والمسئولين عن القاعات', 'banner-bg-3.jpg', NULL, '2023-12-14 20:29:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about_services`
+--
+
+CREATE TABLE `about_services` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(191) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `about_services`
+--
+
+INSERT INTO `about_services` (`id`, `title`, `content`, `created_at`, `updated_at`) VALUES
+(1, 'حجز القاعات', 'نقدم خدمات حجز القاعات لمختلف الفعاليات بما في ذلك المؤتمرات والورش العلمية والفعاليات الثقافية', NULL, NULL),
+(2, 'الدعم الكامل', 'دعم كامل لتنظيم الفعاليات، بما في ذلك ترتيبات التجهيز والتنسيق مع الخدمات الإضافية', NULL, NULL),
+(3, 'خيارات للحجز', 'خيارات للحجز، مع توفير فترات زمنية متنوعة لتناسب جداول الفعاليات المختلفة', NULL, '2023-12-14 21:02:21');
 
 -- --------------------------------------------------------
 
@@ -97,7 +141,8 @@ CREATE TABLE `contacts` (
 INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `created_at`, `updated_at`) VALUES
 (1, 'محمد العمودي', 'mohamed@paaet.edu.kw', 'الموقع عصري ورائع\nالموقع عصري ورائع\nالموقع عصري ورائع\nالموقع عصري ورائع\nالموقع عصري ورائع', '2023-12-08 02:21:45', '2023-12-08 02:21:45'),
 (2, ' احمد الشمري', 'ahmed@paaet.edu.kw', ' رسالةرسالةررررسالة رسالة رسالة رسالة رسالةرسالة ', '2023-12-08 03:07:47', '2023-12-08 03:07:47'),
-(3, 'سالم ', 'salem@paaet.edu.kw', ' رسالة رسالة رسالة رسالة رسالة رسالة رسالة  رسالة رسالة رسالة رسالةرسالة رسالة رسالة رسالة رسالة رسالة رسالة رسالة  رسالة رسالة رسالة رسالةرسالة رسالة رسالة رسالة رسالة رسالة رسالة رسالة  رسالة رسالة رسالة رسالةرسالة', '2023-12-08 03:08:40', '2023-12-08 03:08:40');
+(3, 'سالم ', 'salem@paaet.edu.kw', ' رسالة رسالة رسالة رسالة رسالة رسالة رسالة  رسالة رسالة رسالة رسالةرسالة رسالة رسالة رسالة رسالة رسالة رسالة رسالة  رسالة رسالة رسالة رسالةرسالة رسالة رسالة رسالة رسالة رسالة رسالة رسالة  رسالة رسالة رسالة رسالةرسالة', '2023-12-08 03:08:40', '2023-12-08 03:08:40'),
+(4, 'sads', 'amk@gmail.com', 'sadadadsa', '2023-12-13 22:34:10', '2023-12-13 22:34:10');
 
 -- --------------------------------------------------------
 
@@ -256,7 +301,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2023_11_24_081154_create_notifications_table', 1),
 (14, '2023_11_24_082408_create_images_table', 1),
 (15, '2023_12_08_034119_create_contacts_table', 2),
-(16, '2023_12_08_034120_create_contacts_table', 3);
+(16, '2023_12_08_034120_create_contacts_table', 3),
+(17, '2023_12_14_182911_create_abouts_table', 4),
+(18, '2023_12_14_183033_create_about_services_table', 4),
+(20, '2023_12_14_183104_create_sliders_table', 5);
 
 -- --------------------------------------------------------
 
@@ -398,6 +446,29 @@ INSERT INTO `services` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(191) NOT NULL,
+  `content` text NOT NULL,
+  `image` text DEFAULT NULL,
+  `video` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sliders`
+--
+
+INSERT INTO `sliders` (`id`, `title`, `content`, `image`, `video`, `created_at`, `updated_at`) VALUES
+(1, 'مرحبا بك فى موقعنا', 'احجز قاعتك الان مع اختيار افضل الخدمات لدينا', 'video-img.jpg', 'mylivewallpapers-com-Night-Study-Room-4K.mp4', NULL, '2023-12-14 20:19:54');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `supervisors`
 --
 
@@ -426,6 +497,18 @@ INSERT INTO `supervisors` (`id`, `name`, `email`, `password`, `phone`, `image`, 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `abouts`
+--
+ALTER TABLE `abouts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `about_services`
+--
+ALTER TABLE `about_services`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `admins`
@@ -534,6 +617,12 @@ ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `supervisors`
 --
 ALTER TABLE `supervisors`
@@ -543,6 +632,18 @@ ALTER TABLE `supervisors`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `abouts`
+--
+ALTER TABLE `abouts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `about_services`
+--
+ALTER TABLE `about_services`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -560,7 +661,7 @@ ALTER TABLE `buildings`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -590,7 +691,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `notifications`
@@ -621,6 +722,12 @@ ALTER TABLE `reserves`
 --
 ALTER TABLE `services`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `supervisors`

@@ -25,7 +25,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="about-img-two mr-15">
-                    <img src="{{ asset('assets/images/about-img-3.jpg') }}" alt="Image">
+                    <img src="{{ asset('assets/images/abouts/'.$about->image) }}" alt="Image">
 
                     <div class="about-shape">
                         <img src="{{ asset('assets/images/about-shape.png') }}" alt="Image">
@@ -35,17 +35,16 @@
 
             <div class="col-lg-6">
                 <div class="about-content ml-15">
-                    <span>موقعنا</span>
                     <h2>من نحن</h2>
 
-                    <p>نحن مجموعه من الطلاب الخريجين قمنا بعمل موقع الكترونى لمشروع تخرجنا ليخدم الهيئة التدريسية  وتسهيل لهم حجز القاعات وتنظيم لهم عملية الحجز ومعرفة كافة التفاصيل عن القاعات قبل حجزها وايضا طريقة للتواصل مع المشرفين والقائمين والمسئولين عن القاعات<p>
-
+                    <p>{!! nl2br($about->content) !!}</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Start Study Area -->
+@if($aboutservices != null)
 <section class="studys-area pb-70">
     <div class="container">
         <div class="section-title">
@@ -53,35 +52,23 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6">
-                <div class="single-study study-f3f3f4">
-                    <i class="flaticon-finance"></i>
-                    <h3>
-                        <a href="javascript:void(0)">حجز القاعات</a>
-                    </h3>
-                    <p>نقدم خدمات حجز القاعات لمختلف الفعاليات بما في ذلك المؤتمرات والورش العلمية والفعاليات الثقافية</p></div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-study study-f3f3f4">
-                    <i class="flaticon-finance"></i>
-                    <h3>
-                        <a href="javascript:void(0)">الدعم الكامل</a>
-                    </h3>
-                    <p>دعم كامل لتنظيم الفعاليات، بما في ذلك ترتيبات التجهيز والتنسيق مع الخدمات الإضافية</p>
+            @foreach ($aboutservices as $a)
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-study study-f3f3f4">
+                        <i class="flaticon-finance"></i>
+                        <h3>
+                        <a href="javascript:void(0)">{{ $a->title }}</a>
+                        </h3>
+                        <p>{!! nl2br($a->content) !!}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-study study-f3f3f4">
-                    <i class="flaticon-finance"></i>
-                    <h3>
-                        <a href="javascript:void(0)">خيارات مرنه للحجز</a>
-                    </h3>
-                    <p>خيارات مرنة للحجز، مع توفير فترات زمنية متنوعة لتناسب جداول الفعاليات المختلفة</p>
-                </div>
-            </div>
+            @endforeach
+
+
 
         </div>
     </div>
 </section>
+@endif
 <!-- End Study Area -->
 @endsection
