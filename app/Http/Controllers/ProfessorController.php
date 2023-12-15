@@ -84,7 +84,7 @@ class ProfessorController extends Controller
 
     public function allreports(){
         $professor = Professor::find(auth('professor')->user()->id);
-        $reports = Notification::where('professor_id',$professor->id)->get();
+        $reports = Notification::where('professor_id',$professor->id)->where('author','supervisor')->get();
         //$hall = Hall::find($professor-);
         //$booking = Reserve::find($r->booking_id);
         return view('professors.all-reports',compact('reports'));
