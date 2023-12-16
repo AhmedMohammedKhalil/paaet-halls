@@ -13,7 +13,7 @@ class Professor extends Authenticatable
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'password','phone','image','address'
+        'name', 'email', 'password','civil_number','phone','image','address'
     ];
 
     public function halls()

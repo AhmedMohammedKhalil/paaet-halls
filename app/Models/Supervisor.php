@@ -11,7 +11,7 @@ class Supervisor extends Authenticatable
     protected $guard = 'supervisor';
     public  $table='supervisors';
     protected $fillable = [
-        'name', 'email', 'password','phone','image','is_approved','address'
+        'name', 'email', 'password','civil_number','phone','image','is_approved','address'
     ];
 
     use HasFactory;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2023 at 09:05 PM
+-- Generation Time: Dec 15, 2023 at 02:24 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -326,6 +326,16 @@ CREATE TABLE `notifications` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `content`, `author`, `type`, `book_id`, `professor_id`, `hall_id`, `supervisor_id`, `mark_as_read`, `created_at`, `updated_at`) VALUES
+(32, 'عطل', 'supervisor', NULL, 10, 3, 2, 1, 1, '2023-12-15 01:35:51', '2023-12-15 01:36:38'),
+(33, 'تم التصليح', 'professor', 1, 10, 3, 2, 1, 1, '2023-12-15 01:36:38', '2023-12-15 01:37:36'),
+(35, 'عطل فنى', 'supervisor', NULL, 11, 3, 10, 2, 1, '2023-12-15 02:07:06', '2023-12-15 02:14:37'),
+(36, 'تغيير القاعة', 'professor', 2, 11, 3, 10, 2, 1, '2023-12-15 02:14:37', '2023-12-15 02:15:07');
+
 -- --------------------------------------------------------
 
 --
@@ -417,7 +427,10 @@ CREATE TABLE `reserves` (
 --
 
 INSERT INTO `reserves` (`id`, `start_at`, `end_at`, `professor_id`, `hall_id`, `created_at`, `updated_at`) VALUES
-(8, '2023-12-08T17:07', '2023-12-08T18:07', 1, 11, '2023-12-02 00:06:35', '2023-12-02 00:06:35');
+(8, '2023-12-12T17:07', '2023-12-12T19:07', 1, 11, '2023-12-02 00:06:35', '2023-12-02 00:06:35'),
+(9, '2023-12-17T14:00', '2023-12-17T16:00', 2, 1, '2023-12-02 00:06:35', '2023-12-02 00:06:35'),
+(10, '2023-12-18T12:30', '2023-12-18T16:30', 3, 2, '2023-12-02 00:06:35', '2023-12-02 00:06:35'),
+(11, '2023-12-17T10:04', '2023-12-17T15:05', 3, 10, '2023-12-15 02:05:33', '2023-12-15 02:05:33');
 
 -- --------------------------------------------------------
 
@@ -697,7 +710,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -715,7 +728,7 @@ ALTER TABLE `professors`
 -- AUTO_INCREMENT for table `reserves`
 --
 ALTER TABLE `reserves`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `services`

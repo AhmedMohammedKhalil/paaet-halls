@@ -40,6 +40,7 @@
             <div class="team-content">
                 <div class="team-name">
                     <h3>{{ auth('admin')->user()->name }}</h3>
+                    <h3>{{ auth('admin')->user()->civil_number }}</h3>
                     <h4>{{ auth('admin')->user()->email }}</h4>
                 </div>
             </div>

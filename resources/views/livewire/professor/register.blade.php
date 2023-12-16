@@ -10,6 +10,12 @@
     <div class="row">
         <div class="col-12">
             <div class="form-group">
+                <input type="text" wire:model.lazy='civil_number' id="civil_number" class="form-control" placeholder="الرقم المدنى">
+                @error('civil_number') <span class="text-danger error">{{ $message }}</span>@enderror
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
                 <input type="text" wire:model.lazy='name' id="name" class="form-control" placeholder="الإسم">
                 @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
             </div>

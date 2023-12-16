@@ -47,6 +47,7 @@
             <div class="team-content">
                 <div class="team-name" style="width:100%">
                     <h3>{{ auth('supervisor')->user()->name }}</h3>
+                    <h3>{{ auth('admin')->user()->civil_number }}</h3>
                     <h6>{{ auth('supervisor')->user()->email }}</h4>
                     <h6>{{ auth('supervisor')->user()->phone }}</h4>
                     <h6>{{ auth('supervisor')->user()->address }}</h4>

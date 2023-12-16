@@ -50,6 +50,7 @@
             <div class="team-content">
                 <div class="team-name">
                     <h3>{{ auth('professor')->user()->name }}</h3>
+                    <h3>{{ auth('admin')->user()->civil_number }}</h3>
                     <h4>{{ auth('professor')->user()->email }}</h4>
                     <h4>{{ auth('professor')->user()->phone }}</h4>
                     <p>{!! nl2br(auth('professor')->user()->address) !!}</p>
