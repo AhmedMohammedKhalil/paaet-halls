@@ -61,8 +61,8 @@ class Settings extends Component
             array_merge(
                 $this->rules,
                 [
-                    'email'   => ['required', 'email', "unique:professors,email," . $this->student_id],
-                    'civil_number'   => ['required', 'min:12','max:12','regex:/^([0-9\s\-\+\(\)]*)$/', "unique:professors,civil_number," . $this->student_id],
+                    'email'   => ['required', 'email', "unique:professors,email," . $this->professor_id],
+                    'civil_number'   => ['required', 'min:12','max:12','regex:/^([0-9\s\-\+\(\)]*)$/', "unique:professors,civil_number," . $this->professor_id],
                 ]
             ));
         if(!$this->image)
